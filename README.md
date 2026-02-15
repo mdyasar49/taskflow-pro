@@ -1,129 +1,75 @@
-# 🌌 TaskFlow Pro - Premium Management Console
+# 🚀 Task Management System - Application Support Edition
 
-TaskFlow Pro is a state-of-the-art Task Management System designed with a **Cyber Emerald** aesthetic. It provides a high-performance, futuristic interface for tracking initiatives, analyzing operational metrics, and managing secure user sessions.
+![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.0-6DB33F?style=for-the-badge&logo=spring)
+![Material UI](https://img.shields.io/badge/Material_UI-v5-007FFF?style=for-the-badge&logo=mui)
 
-![Theme](https://img.shields.io/badge/Theme-Cyber%20Emerald-10b981?style=for-the-badge)
-![Tech](https://img.shields.io/badge/Built%20With-React%20%26%20MUI-61dafb?style=for-the-badge)
+## 🌟 Overview
 
----
+The **Task Management System** is a high-availability operational dashboard designed for enterprise application support teams. Unlike standard CRUD applications, this system is engineered as an **Operational Hub**, featuring deep data resilience, forensic audit trails, and a **"Cyber Intelligence"** UI theme optimized for long-term monitoring usage.
 
-## ✨ Premium Features
+This project simulates a real-world NOC (Network Operations Center) environment where task clarity, quick status updates, and visual comfort are critical.
 
-### 📊 System Intelligence Dashboard
+## 🎨 New "Cyber Intelligence" UI Theme
 
-- **Real-time Metrics**: Track total inventory, initial phases, execution status, and completed goals.
-- **Neural Link Performance**: Visual progress tracking with gradient linear bars and sync completion percentages.
-- **Operational Analysis**: Summary of productivity based on completed milestones vs open initiatives.
+Transitioning from a standard emerald green to a specialized **Indigo & Cobalt Blue** palette, the new interface features:
 
-### 📋 Operations Console (Task List)
+- **Reduced Eye Strain**: Dark-mode optimized for 8+ hour shifts.
+- **Glassmorphism**: High-blur cards with depth effects for a modern feel.
+- **Micro-Interactions**: Subtle glows and hover states on all interactive elements.
+- **Unified Aesthetic**: Consistent gradient headers and high-contrast typography across Dashboard, Task List, and Profile screens.
 
-- **Advanced CRUD**: Create, Update, and Delete tasks with a clean, grid-based interface.
-- **Status Cycling**: Quick-action status updates (Pending -> Running -> Completed).
-- **Audit Trails**: Detailed "Created By" and "Last Modified" badges with time tracking.
-- **Universal Search**: Fast lookup by title, ID, or description.
-- **Status Filtering**: Categorize views by initiative phases.
+## ⚡ Key Features
 
-### 👤 Secure Data Center (User Profile)
+### 1. **Modular "Section-Based" Architecture**
 
-- **Identity Modification**: Dynamic username updates.
-- **Security Matrix**: Masked password display with visibility toggles.
-- **Session Management**: Secure logout and credential update (Neural Matrix) dialogs.
+- Organized by business domain (`sections/tasks`, `pages/auth`) rather than technical type.
+- Ensures scalability and easier team collaboration.
 
-### 🎨 Design Philosophy
+### 2. **Deep-Linked Routing**
 
-- **Cyber Emerald Theme**: Vibrant emerald accents on deep onyx backgrounds.
-- **Glassmorphism**: Backdrop blur effects on cards and dialogs.
-- **Micro-animations**: Smooth fade-in transitions and interactive hover states.
+- URL-driven navigation (`/dashboard/analysis`, `/dashboard/table`) allows bookmarking specific views.
+- Browser "Back" button works seamlessly within the SPA.
 
----
+### 3. **Smart Data Handling**
 
-## 🛠️ How It Works (Operational Workflow)
+- **Word-Break Logic**: Zero-layout shift even with massive error logs/JSON strings in task descriptions.
+- **Search & Filter**: Real-time filtering by status and text search across multiple fields.
 
-TaskFlow Pro operates on a specialized dual-view architecture designed for maximum efficiency:
+### 4. **Forensic Audit Trail**
 
-1.  **Authentication Layer**: Users enter via the Neural Gateway (Login/Register). Sessions are secured using JWT-based token management stored locally.
-2.  **System Intelligence View**: Upon entry, the system loads the **Analysis View**.
-    - It fetches all task data via the `taskService`.
-    - Calculates real-time productivity percentages using a `useMemo` hook to ensure performance.
-    - Displays a high-level summary of the "Operational Phase" (Total vs. Completed).
-3.  **Operations Center**: Switching to the **Table View** allows for direct data manipulation.
-    - **Live Search**: Filters the task state in real-time as you type.
-    - **Status Cycling**: Clicking a status badge triggers a logic cycle (Pending -> Running -> Completed), automatically updating the `modifiedBy` and `modifiedOn` audit trails.
-    - **Pagination**: Managed via server-side coordination (where supported) or client-side slicing for optimized rendering.
-4.  **Neural Link**: All actions (Create, Update, Status Change) are synchronized with the backend REST API using Axios interceptors, ensuring data integrity across sessions.
-
----
+- **Restart Logic**: Canceled tasks are never "edited" back to Open; they are **cloned** into new tasks to preserve failure history.
+- **Timestamp Precision**: Tracks modifications down to the nanosecond.
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: [React 19](https://react.dev/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Material UI (MUI)](https://mui.com/) & Vanilla CSS variables
-- **Routing**: [React Router Dom](https://reactrouter.com/)
-- **API Handling**: [Axios](https://axios-http.com/)
-- **Icons**: [MUI Icons](https://mui.com/material-ui/material-icons/)
-
----
+- **Frontend**: React 19, Material UI (MUI), Framer Motion (for animations).
+- **Backend**: Spring Boot, Spring Security, JPA/Hibernate.
+- **Database**: H2 (Dev) / PostgreSQL (Prod).
+- **Authentication**: JWT (JSON Web Tokens) with secure HttpOnly cookies.
 
 ## 🚀 Getting Started
 
-### Prerequisites
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/task-manager.git
+    ```
+2.  **Install Dependencies**:
+    ```bash
+    cd task-manager
+    npm install
+    ```
+3.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
+4.  **Backend Setup**:
+    Ensure the Spring Boot service is running on entering `http://localhost:8080`.
 
-- Node.js (Latest Stable)
-- npm or yarn
+## 📸 Screenshots
 
-### Installation
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/mdyasar49/taskflow-pro.git
-   cd taskflow-pro
-   ```
-
-2. **Install dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-3. **Environment Setup**:
-   Create a `.env` file in the root and add your backend API URL:
-
-   ```env
-   VITE_API_BASE_URL=your_api_url_here
-   ```
-
-4. **Launch Application**:
-   ```bash
-   npm run dev
-   ```
+_(Add screenshots of the new Indigo UI here)_
 
 ---
 
-## 🏗️ Project Structure
-
-```text
-src/
-├── components/          # Reusable UI elements
-│   ├── dashboard/       # Specialized dashboard sub-components
-│   ├── TaskForm.js      # Task creation hub
-│   └── TaskList.js      # Main data table
-├── pages/               # Main view containers
-│   ├── Dashboard.js     # Core application logic
-│   ├── Login.js         # Security gateway
-│   └── Register.js      # Identity creation
-├── services/            # API & Auth middleware
-├── utils/               # Formatting & Date helpers
-└── index.css            # Cyber Emerald global design system
-```
-
----
-
-## 🛡️ Security
-
-The application uses **Neural Encryption Credentials** (Simulated) and JWT routing guards to ensure all operational data remains confined to authorized sessions.
-
----
-
-**Developed with 💚 by [mdyasar49](https://github.com/mdyasar49)**
+**Developed by**: Mohamed Yasar A.

@@ -1,84 +1,86 @@
 # 🖼️ Frontend Architecture Documentation - TaskFlow Pro
 
-This document provides a deep dive into the frontend implementation of TaskFlow Pro, detailing its design system, component architecture, and operational logic.
+This document provides a deep dive into the frontend implementation of TaskFlow Pro, detailing its **Cyber Intelligence** design system, component architecture, and operational logic.
 
 ---
 
-## 🎨 1. Design System: Cyber Emerald
+## 🎨 1. Design System: Cyber Intelligence
 
-TaskFlow Pro uses a custom-built design system defined in `src/index.css` using CSS variables for high flexibility.
+TaskFlow Pro has transitioned to a premium **Indigo & Cobalt Blue** theme defined in `src/index.css`, optimized for long-term operational use (NOC/SOC environments).
 
-### 🟢 Color Palette
+### 🔵 Color Palette
 
-- **Primary (Emerald)**: `#10b981` (Glows and focus states)
-- **Background (Onyx)**: `#020617` (Deep dark mode foundation)
-- **Card/Glass**: `rgba(15, 23, 42, 0.8)` with `backdrop-filter: blur(10px)`
-- **Success/Done**: `#34d399`
-- **Error/Exit**: `#f87171`
+- **Primary (Indigo)**: `#6366f1` (Active states, primary buttons, focus rings)
+- **Secondary (Cobalt)**: `#3b82f6` (Information, secondary actions)
+- **Background (Deep Space)**: `#0f172a` (Main background, preventing eye strain)
+- **Surface (Glass)**: `rgba(15, 23, 42, 0.7)` with `backdrop-filter: blur(20px)`
+- **Success/Safe**: `#10b981` (Completed tasks)
+- **Critical/Alert**: `#ef4444` (High priority, errors)
 
 ### 🕯️ Visual Features
 
-- **Glassmorphism**: Applied to all Paper components and Dialogs to create a multi-layered futuristic feel.
-- **Vibrant Gradients**: Used in the Main Dashboard and primary action buttons for a premium "Cyber" aesthetic.
-- **Dynamic Scrollbars**: Customized thin emerald scrollbars for a non-intrusive navigation experience.
+- **Glassmorphism 2.0**: High-blur, semi-transparent cards used for `UserProfile`, `StatCard`, and the main `Dashboard` container.
+- **Micro-Animations**:
+  - Hover effects on cards (`transform: translateY(-5px)`).
+  - "Scanning" animations on the performance matrix.
+  - Floating avatars in the user profile.
+- **Typography**: Uses system-ui/sans-serif with high font weights (800/900) for headers to mimic a "Head-Up Display" (HUD) feel.
 
 ---
 
 ## 🏗️ 2. Component Architecture
 
-The application follows a modular component-based architecture for better maintainability.
+The application follows a modular, domain-driven architecture.
 
 ### 📂 Core Components (`src/components/`)
 
-- **`TaskList.js`**: A high-performance data table using MUI's `Table` components. Features include:
-  - Status cycling logic.
-  - Custom audit trail badges.
-  - Sticky headers and hover transitions.
-- **`TaskForm.js`**: A modal-based task creator (`MUI Dialog`) with full dark theme integration and real-time validation.
+- **`dashboard/AnalysisView.js`**: The command center. Displays high-level metrics using `StatCard` components arranged in a responsive Grid.
+- **`dashboard/UserProfile.js`**: The "Neural Identity" module. Features a scanning identity card, password management, and session control.
+- **`dashboard/StatCard.js`**: A reusable, glassmorphic widget for displaying individual KPIs (Total, Pending, Done).
 
-### 📂 Dashboard Modules (`src/components/dashboard/`)
+### 📂 Feature Modules (`src/sections/`)
 
-- **`AnalysisView.js`**: The intelligence hub. Uses `useMemo` to process task statistics and displays them via circular progress and stat cards.
-- **`UserProfile.js`**: Manages the user's "Neural Presence." It handles profile editing, password visibility toggles, and session termination.
-- **`StatCard.js`**: A reusable micro-component for displaying individual metrics with icons and theme-aware colors.
+- **`tasks/TaskList.js`**: A high-performance data table designed for density.
+  - **Word-Break Logic**: Handles massive error logs without breaking layout.
+  - **Audit Badges**: Visual indicators for priority and status.
+- **`tasks/TaskForm.js`**: A tactical modal for creating/editing tasks.
+  - **Smart Validation**: Prevents submission of incomplete operational data.
+  - **Styled Inputs**: Custom MUI text fields with indigo focus states.
 
 ---
 
 ## ⚙️ 3. State & Operational Logic
 
-### 🔄 State Management
+### 🔄 specialized Routing
 
-- **Local State**: Managed via React's `useState`.
-- **Side Effects**: `useEffect` handles initial data fetching and authentication checks.
-- **Performance Optimization**: `useCallback` is used for the `fetchTasks` function to prevent unnecessary re-renders in child components.
+- **Deep-Linking**: The dashboard uses URL parameters (`/dashboard/:view`) instead of local state to switch between `analysis`, `table`, and `profile`.
+- **Why?** Allows operators to bookmark specific views and use the browser's Back/Forward navigation.
 
-### 🌐 API Integration (`src/services/`)
+### 🌐 Data Resilience
 
-- **Axios Middleware**: A centralized service layer handles all HTTP requests.
-- **Interceptors**: Future-ready for adding request/response interceptors (like adding Auth headers).
-- **Service Layer Pattern**: Separates business logic (API calls) from UI components.
+- **Restart Logic**: Canceled tasks are never "reopened". They are **cloned** into new entities to preserve the historical record of the failure.
+- **Live Search**: Real-time filtering implemented via a custom hook pattern `useMemo` to filter tasks by title or description without API thrashing.
 
 ---
 
 ## 🚀 4. Technical Stack
 
-| Category       | Technology       | Purpose                                    |
-| :------------- | :--------------- | :----------------------------------------- |
-| **Framework**  | React 19         | UI Core & Component Logic                  |
-| **Styles**     | Material UI 7    | Component Library & Theming                |
-| **Logic**      | Javascript (ESM) | Modern module-based script execution       |
-| **Routing**    | React Router 7   | Client-side navigation & Route protection  |
-| **Build Tool** | Vite             | Ultra-fast development server and bundling |
+| Category       | Technology        | Purpose                              |
+| :------------- | :---------------- | :----------------------------------- |
+| **Framework**  | React 19          | UI Core & Component Logic            |
+| **Styles**     | Material UI (MUI) | Operational Layout & Theming         |
+| **Icons**      | MUI Icons         | Visual Data Representation           |
+| **Routing**    | React Router 6    | Deep-linking & Navigation            |
+| **Build Tool** | Vite              | Instant HMR (Hot Module Replacement) |
 
 ---
 
 ## 🛠️ 5. Development Workflow
 
-1. **Theming**: Edit `src/index.css` variables to change the global look.
-2. **Components**: Build new UI elements in `src/components/` and integrate them into `pages/Dashboard.js`.
-3. **Logic**: Add new API methods in `src/services/taskService.js`.
-4. **Styles**: Use the `sx` prop in MUI components for component-level styling and `index.css` for global utilities.
+1.  **Theming**: controlled via `src/index.css` (CSS Variables) and `MUI ThemeProvider`.
+2.  **Layout**: Uses **MUI Grid v2** (`Grid size={{...}}`) for responsive dashboards.
+3.  **API**: All backend communication is centralized in `src/services/api.js`.
 
 ---
 
-**TaskFlow Pro Frontend - Engineered for Excellence.**
+**TaskFlow Pro Frontend - Engineered for High-Availability Operations.**
