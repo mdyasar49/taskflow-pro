@@ -37,6 +37,23 @@ TaskFlow Pro is a state-of-the-art Task Management System designed with a **Cybe
 
 ---
 
+## 🛠️ How It Works (Operational Workflow)
+
+TaskFlow Pro operates on a specialized dual-view architecture designed for maximum efficiency:
+
+1.  **Authentication Layer**: Users enter via the Neural Gateway (Login/Register). Sessions are secured using JWT-based token management stored locally.
+2.  **System Intelligence View**: Upon entry, the system loads the **Analysis View**.
+    - It fetches all task data via the `taskService`.
+    - Calculates real-time productivity percentages using a `useMemo` hook to ensure performance.
+    - Displays a high-level summary of the "Operational Phase" (Total vs. Completed).
+3.  **Operations Center**: Switching to the **Table View** allows for direct data manipulation.
+    - **Live Search**: Filters the task state in real-time as you type.
+    - **Status Cycling**: Clicking a status badge triggers a logic cycle (Pending -> Running -> Completed), automatically updating the `modifiedBy` and `modifiedOn` audit trails.
+    - **Pagination**: Managed via server-side coordination (where supported) or client-side slicing for optimized rendering.
+4.  **Neural Link**: All actions (Create, Update, Status Change) are synchronized with the backend REST API using Axios interceptors, ensuring data integrity across sessions.
+
+---
+
 ## 🛠️ Technology Stack
 
 - **Frontend**: [React 19](https://react.dev/)
