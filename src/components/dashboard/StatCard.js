@@ -29,8 +29,9 @@ const StatCard = ({ title, value, icon, color }) => (
         <Avatar 
           sx={{ 
             bgcolor: color, 
-            width: 48, 
-            height: 48, 
+            width: 40, 
+            height: 40,
+            ml: 2,
             boxShadow: `0 8px 16px -4px ${color}60`
           }}
         >

@@ -43,16 +43,16 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
       <Box sx={{ flex: 1, overflow: 'auto', pr: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={3}>
-            <StatCard title="Total Inventory" value={stats.total} icon={<TotalIcon />} color="#10b981" />
+            <StatCard title="Total Inventory" value={stats.total} icon={<TotalIcon sx={{ fontSize: 18 }}/>} color="#10b981" />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <StatCard title="Initial Phase" value={stats.pending} icon={<OpenIcon />} color="#0ea5e9" />
+            <StatCard title="Initial Phase" value={stats.pending} icon={<OpenIcon sx={{ fontSize: 18 }}/>} color="#0ea5e9" />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <StatCard title="In Execution" value={stats.progress} icon={<PendingIcon />} color="#f59e0b" />
+            <StatCard title="In Execution" value={stats.progress} icon={<PendingIcon sx={{ fontSize: 18 }}/>} color="#f59e0b" />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <StatCard title="Goal Reached" value={stats.done} icon={<DoneIcon />} color="#10b981" />
+            <StatCard title="Goal Reached" value={stats.done} icon={<DoneIcon sx={{ fontSize: 18 }}/>} color="#10b981" />
           </Grid>
 
           <Grid item xs={12} md={8}>
