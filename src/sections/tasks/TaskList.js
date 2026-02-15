@@ -48,11 +48,11 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
 
   const getPriorityStyle = (priority) => {
     switch (priority) {
-      case 'High':
+      case 'HIGH':
         return { bg: 'rgba(239, 68, 68, 0.1)', color: '#ef4444' };
-      case 'Medium':
+      case 'MEDIUM':
         return { bg: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b' };
-      case 'Low':
+      case 'LOW':
         return { bg: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6' };
       default:
         return { bg: 'rgba(148, 163, 184, 0.1)', color: '#94a3b8' };

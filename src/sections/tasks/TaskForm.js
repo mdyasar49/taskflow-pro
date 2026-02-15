@@ -32,7 +32,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
   const [title, setTitle] = useState(task ? task.title : '');
   const [description, setDescription] = useState(task ? task.description : '');
   const [status, setStatus] = useState(task ? task.status : 'Open');
-  const [priority, setPriority] = useState(task ? task.priority : 'Medium');
+  const [priority, setPriority] = useState(task ? task.priority : 'MEDIUM');
   const [dueDate, setDueDate] = useState(task && task.dueDate ? task.dueDate.slice(0, 16) : '');
   const theme = useTheme();
 
@@ -201,13 +201,13 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   disabled={isReadOnly}
                   fullWidth
                   InputProps={{
-                    startAdornment: <StatusIcon sx={{ color: priority === 'High' ? '#ef4444' : priority === 'Medium' ? '#f59e0b' : '#3b82f6', mr: 1, fontSize: 18 }} />,
+                    startAdornment: <StatusIcon sx={{ color: priority === 'HIGH' ? '#ef4444' : priority === 'MEDIUM' ? '#f59e0b' : '#3b82f6', mr: 1, fontSize: 18 }} />,
                     sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' } }
                   }}
                 >
-                  <MenuItem value="High" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#ef4444' }}>HIGH PRIORITY</MenuItem>
-                  <MenuItem value="Medium" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#f59e0b' }}>MEDIUM</MenuItem>
-                  <MenuItem value="Low" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#3b82f6' }}>LOW</MenuItem>
+                  <MenuItem value="HIGH" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#ef4444' }}>HIGH PRIORITY</MenuItem>
+                  <MenuItem value="MEDIUM" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#f59e0b' }}>MEDIUM</MenuItem>
+                  <MenuItem value="LOW" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#3b82f6' }}>LOW</MenuItem>
                 </TextField>
               </Grid>
 

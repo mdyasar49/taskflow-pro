@@ -21,18 +21,23 @@ export const authService = {
         if (response.data.token) {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', response.data.username);
+            localStorage.setItem('role', response.data.role || 'USER'); // Store role
         }
         return response.data;
     },
-    register: async (username, password) => {
-        return await api.post('/auth/register', { username, password });
+    register: async (username, password, role = 'USER') => {
+        return await api.post('/auth/register', { username, password, role });
     },
     logout: () => {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
+        localStorage.removeItem('role'); // Remove role on logout
     },
     getCurrentUser: () => {
         return localStorage.getItem('username');
+    },
+    getCurrentUserRole: () => {
+        return localStorage.getItem('role') || 'USER';
     }
 };
 
