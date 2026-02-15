@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0F172A"/>
+  
+  <!-- Header -->
+  <rect width="1200" height="64" fill="#020617"/>
+  <rect x="0" y="63" width="1200" height="1" fill="#6366F1" fill-opacity="0.2"/>
+  <text x="32" y="42" fill="white" font-family="Arial" font-weight="bold" font-size="24">TASKFLOW</text>
+  <rect x="1100" y="16" width="32" height="32" rx="16" fill="#6366F1"/>
+  <text x="1108" y="38" fill="white" font-family="Arial" font-weight="bold" font-size="16">U</text>
+
+  <!-- Title Area -->
+  <text x="32" y="120" fill="white" font-family="Arial" font-weight="bold" font-size="32">Neural Identity Profile</text>
+  <text x="32" y="150" fill="#94A3B8" font-family="Arial" font-size="16">Core operator credentials and security controls.</text>
+
+  <!-- Layout Grid -->
+  <!-- Left Panel: Profile ID -->
+  <rect x="32" y="180" width="380" height="500" rx="24" fill="#1E293B" fill-opacity="0.7" stroke="#6366F1" stroke-opacity="0.3"/>
+  
+  <!-- Avatar -->
+  <circle cx="222" cy="280" r="80" fill="#6366F1" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="4"/>
+  <text x="222" y="300" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="64">U</text>
+  <circle cx="280" cy="340" r="16" fill="#6366F1" stroke="#0F172A" stroke-width="4"/>
+  
+  <!-- Name -->
+  <text x="222" y="400" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="28">User Name</text>
+  <text x="222" y="430" text-anchor="middle" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="12" letter-spacing="2">AUTHORIZED MASTER OPERATOR</text>
+  
+  <rect x="122" y="460" width="200" height="40" rx="8" fill="#6366F1" fill-opacity="0.1" stroke="#6366F1"/>
+  <text x="222" y="485" text-anchor="middle" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="12">MODIFY NEURAL IDENTITY</text>
+
+  <!-- Right Panel: Stats & Controls -->
+  <!-- Matrix Card -->
+  <rect x="444" y="180" width="724" height="280" rx="24" fill="#1E293B" fill-opacity="0.7" stroke="#6366F1" stroke-opacity="0.1"/>
+  <text x="476" y="220" fill="white" font-family="Arial" font-weight="bold" font-size="18">SYSTEM PERFORMANCE MATRIX</text>
+  
+  <rect x="476" y="250" width="300" height="80" rx="12" fill="#0F172A" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <text x="626" y="295" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="32">124</text>
+  <text x="626" y="315" text-anchor="middle" fill="#94A3B8" font-family="Arial" font-size="10" letter-spacing="1">TOTAL DEPLOYMENTS</text>
+
+  <rect x="800" y="250" width="300" height="80" rx="12" fill="#6366F1" fill-opacity="0.1" stroke="#6366F1" stroke-opacity="0.2"/>
+  <text x="950" y="295" text-anchor="middle" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="32">61</text>
+  <text x="950" y="315" text-anchor="middle" fill="#6366F1" font-family="Arial" font-size="10" letter-spacing="1">SUCCESSFUL EXECUTIONS</text>
+
+  <!-- Progress Bar -->
+  <rect x="476" y="360" width="624" height="60" rx="12" fill="#0F172A"/>
+  <text x="500" y="385" fill="#94A3B8" font-family="Arial" font-weight="bold" font-size="12">EFFICIENCY RATING</text>
+  <text x="1050" y="385" text-anchor="end" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="18">49%</text>
+  <rect x="500" y="400" width="550" height="8" rx="4" fill="#334155"/>
+  <rect x="500" y="400" width="270" height="8" rx="4" fill="#6366F1"/>
+
+  <!-- Emergency Controls -->
+  <rect x="444" y="490" width="724" height="190" rx="24" fill="#1E293B" fill-opacity="0.7" stroke="#EF4444" stroke-opacity="0.2"/>
+  <text x="476" y="530" fill="white" font-family="Arial" font-weight="bold" font-size="18">EMERGENCY OVERRIDE CONTROLS</text>
+  
+  <rect x="476" y="560" width="200" height="50" rx="8" fill="#6366F1"/>
+  <text x="576" y="590" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="14">RESUME FEED</text>
+
+  <rect x="700" y="560" width="200" height="50" rx="8" fill="none" stroke="#6366F1" stroke-opacity="0.5"/>
+  <text x="800" y="590" text-anchor="middle" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="14">UPDATE KEYS</text>
+
+  <rect x="924" y="560" width="200" height="50" rx="8" fill="none" stroke="#EF4444" stroke-opacity="0.5"/>
+  <text x="1024" y="590" text-anchor="middle" fill="#EF4444" font-family="Arial" font-weight="bold" font-size="14">EXIT SYSTEM</text>
+
+</svg>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0F172A"/>
+  
+  <!-- Header -->
+  <rect width="1200" height="64" fill="#020617"/>
+  <rect x="0" y="63" width="1200" height="1" fill="#6366F1" fill-opacity="0.2"/>
+  <text x="32" y="42" fill="white" font-family="Arial" font-weight="bold" font-size="24">TASKFLOW</text>
+  <rect x="1100" y="16" width="32" height="32" rx="16" fill="#6366F1"/>
+  <text x="1108" y="38" fill="white" font-family="Arial" font-weight="bold" font-size="16">U</text>
+
+  <!-- Sidebar -->
+  <rect x="32" y="96" width="280" height="672" rx="16" fill="#1E293B" fill-opacity="0.7" stroke="#6366F1" stroke-opacity="0.2"/>
+  <text x="64" y="140" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="14" letter-spacing="2">NEURAL IDENTITY</text>
+  <circle cx="172" cy="240" r="64" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="2"/>
+  <circle cx="172" cy="240" r="48" fill="#6366F1"/>
+  <text x="160" y="250" fill="white" font-family="Arial" font-weight="bold" font-size="32">U</text>
+  <text x="106" y="340" fill="white" font-family="Arial" font-weight="bold" font-size="20">ADMIN USER</text>
+  <text x="110" y="364" fill="#6366F1" font-family="Arial" font-size="12">LEVEL 04 - ROOT CONTROL</text>
+  
+  <!-- Main Content Area -->
+  <rect x="344" y="96" width="824" height="672" rx="16" fill="#1E293B" fill-opacity="0.5"/>
+  
+  <!-- Stat Cards -->
+  <rect x="376" y="128" width="184" height="120" rx="12" fill="#6366F1" fill-opacity="0.1" stroke="#6366F1" stroke-opacity="0.2"/>
+  <text x="400" y="160" fill="#94A3B8" font-family="Arial" font-size="12">TOTAL INVENTORY</text>
+  <text x="400" y="200" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="32">124</text>
+  
+  <rect x="576" y="128" width="184" height="120" rx="12" fill="#3B82F6" fill-opacity="0.1" stroke="#3B82F6" stroke-opacity="0.2"/>
+  <text x="600" y="160" fill="#94A3B8" font-family="Arial" font-size="12">INITIAL PHASE</text>
+  <text x="600" y="200" fill="#3B82F6" font-family="Arial" font-weight="bold" font-size="32">45</text>
+  
+  <rect x="776" y="128" width="184" height="120" rx="12" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-opacity="0.2"/>
+  <text x="800" y="160" fill="#94A3B8" font-family="Arial" font-size="12">IN EXECUTION</text>
+  <text x="800" y="200" fill="#F59E0B" font-family="Arial" font-weight="bold" font-size="32">18</text>
+  
+  <rect x="976" y="128" width="160" height="120" rx="12" fill="#10B981" fill-opacity="0.1" stroke="#10B981" stroke-opacity="0.2"/>
+  <text x="1000" y="160" fill="#94A3B8" font-family="Arial" font-size="12">GOAL REACHED</text>
+  <text x="1000" y="200" fill="#10B981" font-family="Arial" font-weight="bold" font-size="32">61</text>
+  
+  <!-- Task Table Header -->
+  <text x="376" y="300" fill="white" font-family="Arial" font-weight="bold" font-size="20">Operations Console</text>
+  
+  <!-- Table Mockup -->
+  <rect x="376" y="320" width="760" height="416" rx="8" fill="#0F172A" stroke="#6366F1" stroke-opacity="0.1"/>
+  
+  <!-- Table Header row -->
+  <rect x="376" y="320" width="760" height="48" rx="8" fill="#1E293B"/>
+  <text x="400" y="350" fill="#94A3B8" font-family="Arial" font-weight="bold" font-size="12">TASK ID</text>
+  <text x="480" y="350" fill="#94A3B8" font-family="Arial" font-weight="bold" font-size="12">TITLE</text>
+  <text x="700" y="350" fill="#94A3B8" font-family="Arial" font-weight="bold" font-size="12">STATUS</text>
+  <text x="850" y="350" fill="#94A3B8" font-family="Arial" font-weight="bold" font-size="12">PRIORITY</text>
+  
+  <!-- Row 1 -->
+  <text x="400" y="400" fill="#6366F1" font-family="Arial" font-size="12">#TSK-892</text>
+  <text x="480" y="400" fill="white" font-family="Arial" font-weight="bold" font-size="14">Deploy Backend API v2</text>
+  <rect x="700" y="386" width="80" height="24" rx="12" fill="#3B82F6" fill-opacity="0.2"/>
+  <text x="716" y="402" fill="#3B82F6" font-family="Arial" font-weight="bold" font-size="10">RUNNING</text>
+  <rect x="850" y="386" width="60" height="24" rx="12" fill="#EF4444" fill-opacity="0.2"/>
+  <text x="864" y="402" fill="#EF4444" font-family="Arial" font-weight="bold" font-size="10">HIGH</text>
+  
+  <!-- Line Separator -->
+  <line x1="376" y1="424" x2="1136" y2="424" stroke="#334155"/>
+
+  <!-- Row 2 -->
+  <text x="400" y="460" fill="#6366F1" font-family="Arial" font-size="12">#TSK-893</text>
+  <text x="480" y="460" fill="white" font-family="Arial" font-weight="bold" font-size="14">Update Database Schema</text>
+  <rect x="700" y="446" width="90" height="24" rx="12" fill="#10B981" fill-opacity="0.2"/>
+  <text x="712" y="462" fill="#10B981" font-family="Arial" font-weight="bold" font-size="10">COMPLETED</text>
+  <rect x="850" y="446" width="70" height="24" rx="12" fill="#F59E0B" fill-opacity="0.2"/>
+  <text x="860" y="462" fill="#F59E0B" font-family="Arial" font-weight="bold" font-size="10">MEDIUM</text>
+  
+  <!-- Line Separator -->
+  <line x1="376" y1="484" x2="1136" y2="484" stroke="#334155"/>
+  
+  <!-- Row 3 -->
+  <text x="400" y="520" fill="#6366F1" font-family="Arial" font-size="12">#TSK-894</text>
+  <text x="480" y="520" fill="white" font-family="Arial" font-weight="bold" font-size="14">Security Audit Level 1</text>
+  <rect x="700" y="506" width="80" height="24" rx="12" fill="#A855F7" fill-opacity="0.2"/>
+  <text x="720" y="522" fill="#A855F7" font-family="Arial" font-weight="bold" font-size="10">REVIEW</text>
+  <rect x="850" y="506" width="60" height="24" rx="12" fill="#EF4444" fill-opacity="0.2"/>
+  <text x="864" y="522" fill="#EF4444" font-family="Arial" font-weight="bold" font-size="10">HIGH</text>
+
+</svg>

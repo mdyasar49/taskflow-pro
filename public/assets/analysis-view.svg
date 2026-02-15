@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0F172A"/>
+  
+  <!-- Header -->
+  <rect width="1200" height="64" fill="#020617"/>
+  <rect x="0" y="63" width="1200" height="1" fill="#6366F1" fill-opacity="0.2"/>
+  <text x="32" y="42" fill="white" font-family="Arial" font-weight="bold" font-size="24">TASKFLOW</text>
+  <rect x="1100" y="16" width="32" height="32" rx="16" fill="#6366F1"/>
+  <text x="1108" y="38" fill="white" font-family="Arial" font-weight="bold" font-size="16">U</text>
+
+  <!-- Title Area -->
+  <text x="32" y="120" fill="white" font-family="Arial" font-weight="bold" font-size="32">Analysis Dashboard</text>
+  <text x="32" y="150" fill="#94A3B8" font-family="Arial" font-size="16">Real-time system intelligence and operational metrics.</text>
+
+  <!-- KPI Grid -->
+  <!-- Card 1: Total Inventory -->
+  <rect x="32" y="180" width="260" height="160" rx="16" fill="#6366F1" fill-opacity="0.1" stroke="#6366F1" stroke-opacity="0.2"/>
+  <circle cx="250" cy="220" r="20" fill="#6366F1" fill-opacity="0.2"/>
+  <text x="56" y="220" fill="#94A3B8" font-family="Arial" font-size="14" letter-spacing="1">TOTAL INVENTORY</text>
+  <text x="56" y="280" fill="#6366F1" font-family="Arial" font-weight="bold" font-size="48">124</text>
+  
+  <!-- Card 2: Initial Phase -->
+  <rect x="312" y="180" width="260" height="160" rx="16" fill="#3B82F6" fill-opacity="0.1" stroke="#3B82F6" stroke-opacity="0.2"/>
+  <circle cx="530" cy="220" r="20" fill="#3B82F6" fill-opacity="0.2"/>
+  <text x="336" y="220" fill="#94A3B8" font-family="Arial" font-size="14" letter-spacing="1">PENDING TASKS</text>
+  <text x="336" y="280" fill="#3B82F6" font-family="Arial" font-weight="bold" font-size="48">45</text>
+  
+  <!-- Card 3: In Execution -->
+  <rect x="592" y="180" width="260" height="160" rx="16" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-opacity="0.2"/>
+  <circle cx="810" cy="220" r="20" fill="#F59E0B" fill-opacity="0.2"/>
+  <text x="616" y="220" fill="#94A3B8" font-family="Arial" font-size="14" letter-spacing="1">IN PROGRESS</text>
+  <text x="616" y="280" fill="#F59E0B" font-family="Arial" font-weight="bold" font-size="48">18</text>
+  
+  <!-- Card 4: Goal Reached -->
+  <rect x="872" y="180" width="260" height="160" rx="16" fill="#10B981" fill-opacity="0.1" stroke="#10B981" stroke-opacity="0.2"/>
+  <circle cx="1090" cy="220" r="20" fill="#10B981" fill-opacity="0.2"/>
+  <text x="896" y="220" fill="#94A3B8" font-family="Arial" font-size="14" letter-spacing="1">COMPLETED</text>
+  <text x="896" y="280" fill="#10B981" font-family="Arial" font-weight="bold" font-size="48">61</text>
+
+  <!-- Charts Area -->
+  <rect x="32" y="370" width="700" height="380" rx="16" fill="#1E293B" fill-opacity="0.5" stroke="#6366F1" stroke-opacity="0.1"/>
+  <text x="64" y="410" fill="white" font-family="Arial" font-weight="bold" font-size="20">Project Velocity</text>
+  
+  <!-- Mock Chart Bars -->
+  <rect x="80" y="650" width="40" height="80" rx="4" fill="#6366F1" fill-opacity="0.3"/>
+  <rect x="140" y="600" width="40" height="130" rx="4" fill="#6366F1" fill-opacity="0.4"/>
+  <rect x="200" y="550" width="40" height="180" rx="4" fill="#6366F1" fill-opacity="0.5"/>
+  <rect x="260" y="580" width="40" height="150" rx="4" fill="#6366F1" fill-opacity="0.6"/>
+  <rect x="320" y="500" width="40" height="230" rx="4" fill="#6366F1" fill-opacity="0.7"/>
+  <rect x="380" y="450" width="40" height="280" rx="4" fill="#6366F1" fill-opacity="0.8"/> <!-- Highlight -->
+  <rect x="440" y="520" width="40" height="210" rx="4" fill="#6366F1" fill-opacity="0.7"/>
+  <rect x="500" y="570" width="40" height="160" rx="4" fill="#6366F1" fill-opacity="0.6"/>
+  
+  <!-- Side Panel -->
+  <rect x="760" y="370" width="372" height="380" rx="16" fill="#1E293B" fill-opacity="0.5" stroke="#6366F1" stroke-opacity="0.1"/>
+  <text x="790" y="410" fill="white" font-family="Arial" font-weight="bold" font-size="20">Team Activity</text>
+  <circle cx="810" cy="460" r="4" fill="#10B981"/>
+  <text x="830" y="465" fill="#94A3B8" font-family="Arial" font-size="14">Deployment successful (2m ago)</text>
+  <circle cx="810" cy="500" r="4" fill="#F59E0B"/>
+  <text x="830" y="505" fill="#94A3B8" font-family="Arial" font-size="14">API Rate limit warning (15m ago)</text>
+  <circle cx="810" cy="540" r="4" fill="#3B82F6"/>
+  <text x="830" y="545" fill="#94A3B8" font-family="Arial" font-size="14">New user registration (1h ago)</text>
+
+</svg>
