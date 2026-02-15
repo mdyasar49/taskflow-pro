@@ -411,7 +411,7 @@ const Dashboard = () => {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <StatsIcon sx={{ display: 'flex', mr: 2, color: '#10b981', fontSize: 28 }} />
-            <Typography variant="h5" sx={{ fontWeight: 900, flexGrow: 1, letterSpacing: -1 }}>TASKFLOW <Typography variant="caption" sx={{ opacity: 0.5, fontWeight: 400 }}>v2.0 PREVIEW</Typography></Typography>
+            <Typography variant="h5" sx={{ fontWeight: 900, flexGrow: 1, letterSpacing: -1 }}>TASKFLOW</Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <Button
                 onClick={handleMenuOpen}
