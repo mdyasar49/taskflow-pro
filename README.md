@@ -71,17 +71,17 @@ Transitioning from a standard emerald green to a specialized **Indigo & Cobalt B
 ### 1. **Operations Dashboard**
 
 _High-level situational awareness with Velocity Charts and Critical Team Activity Logs._
-![Analysis Dashboard](public/assets/analysis-view.svg)
+![Analysis Dashboard](./public/assets/analysis-view.svg)
 
 ### 2. **Tactical Task Console**
 
 _Data-dense grid with specialized 'Word-Break' logic for error logs and real-time status/priority indicators._
-![Task List](public/assets/task-list-view.svg)
+![Task List](./public/assets/task-list-view.svg)
 
 ### 3. **Neural Identity Profile**
 
 _Personalized command center with session security controls and individual efficiency metrics._
-![User Profile](public/assets/profile-view.svg)
+![User Profile](./public/assets/profile-view.svg)
 
 ---
 
