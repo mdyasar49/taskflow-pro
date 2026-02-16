@@ -128,7 +128,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
         >
           <Stack spacing={3.5} sx={{ mt: 1 }}>
             <Box>
-              <Typography variant="caption" sx={{ fontWeight: 900, color: '#94a3b8', mb: 1, display: 'block', letterSpacing: 1 }}>
+              <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
                 TASK IDENTIFIER
               </Typography>
               <TextField
@@ -141,13 +141,13 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 disabled={isReadOnly}
                 InputProps={{
                   startAdornment: <TitleIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                  sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' } }
+                  sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
                 }}
               />
             </Box>
 
             <Box>
-              <Typography variant="caption" sx={{ fontWeight: 900, color: '#94a3b8', mb: 1, display: 'block', letterSpacing: 1 }}>
+              <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
                 SPECIFICATIONS
               </Typography>
               <TextField
@@ -160,14 +160,14 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 disabled={isReadOnly}
                 InputProps={{
                   startAdornment: <DescIcon sx={{ color: '#6366f1', mr: 1, mt: 1, alignSelf: 'flex-start', fontSize: 18 }} />,
-                  sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' } }
+                  sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
                 }}
               />
             </Box>
 
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <Typography variant="caption" sx={{ fontWeight: 900, color: '#94a3b8', mb: 1, display: 'block', letterSpacing: 1 }}>
+                <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
                   OPERATIONAL PHASE
                 </Typography>
                 <TextField
@@ -178,7 +178,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   fullWidth
                   InputProps={{
                     startAdornment: <StatusIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' } }
+                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
                   }}
                 >
                   <MenuItem value="Open" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem' }}>PENDING</MenuItem>
@@ -191,7 +191,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                <Typography variant="caption" sx={{ fontWeight: 900, color: '#94a3b8', mb: 1, display: 'block', letterSpacing: 1 }}>
+                <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
                   PRIORITY LEVEL
                 </Typography>
                 <TextField
@@ -202,7 +202,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   fullWidth
                   InputProps={{
                     startAdornment: <StatusIcon sx={{ color: priority === 'HIGH' ? '#ef4444' : priority === 'MEDIUM' ? '#f59e0b' : '#3b82f6', mr: 1, fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' } }
+                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
                   }}
                 >
                   <MenuItem value="HIGH" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#ef4444' }}>HIGH PRIORITY</MenuItem>
@@ -212,7 +212,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
               </Grid>
 
               <Grid item xs={12}>
-                <Typography variant="caption" sx={{ fontWeight: 900, color: '#94a3b8', mb: 1, display: 'block', letterSpacing: 1 }}>
+                <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
                   TARGET DEADLINE
                 </Typography>
                 <TextField
@@ -222,7 +222,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   onChange={(e) => setDueDate(e.target.value)}
                   disabled={isReadOnly}
                   InputProps={{
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' } }
+                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
                   }}
                   InputLabelProps={{ shrink: true }}
                 />
@@ -237,11 +237,11 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
           <Button 
             onClick={onClose} 
             sx={{ 
-                color: '#64748b', 
+                color: '#f8fafc', 
                 fontWeight: 700, 
                 px: 3, 
                 textTransform: 'none',
-                '&:hover': { bgcolor: '#f1f5f9' } 
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } 
             }}
           >
             Cancel

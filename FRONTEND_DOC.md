@@ -51,6 +51,9 @@ graph TD
 
 - **Virtualization Ready**: Designed to handle large datasets (though currently paginated).
 - **Smart Rendering**: Uses conditional rendering for empty states vs loading skeletons.
+- **Smart Deletion**: Delete actions are conditionally rendered (forbidden for 'Done' tasks) to prevent data loss.
+- **Smart Restart**: Restart actions are hidden for already-restarted tasks to prevent duplicate chains.
+- **Custom Dialogs**: Replaced native browser alerts with Material UI Dialogs for a premium feel.
 - **Word-Break Logic**: css `word-break: break-word` prevents layout shift from long error logs.
 
 #### **`sections/tasks/TaskForm.js`**

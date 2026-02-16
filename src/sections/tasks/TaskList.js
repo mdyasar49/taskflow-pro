@@ -28,7 +28,7 @@ import {
 } from '@mui/icons-material';
 import { formatDate } from '../../utils/dateUtils';
 
-const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTask }) => {
+const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTask, restartedIds = [] }) => {
   const getStatusStyle = (status) => {
     switch (status) {
       case 'Done':
@@ -233,7 +233,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                     <Stack direction="row" spacing={1} justifyContent="flex-end">
                       {task.status === 'Done' || task.status === 'Canceled' ? (
                         <>
-                          {task.status === 'Canceled' && (
+                          {task.status === 'Canceled' && !task.title.startsWith('(RESTARTED)') && !restartedIds.includes(task.id) && (
                             <Tooltip title="RESTART OPERATION (CLONE)">
                               <IconButton 
                                 size="small"

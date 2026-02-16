@@ -36,6 +36,7 @@ This frontend seamlessly integrates with the Spring Boot backend via **JWT Authe
 - **JWT Handling**: Secure storage and automatic header injection via Axios interceptors.
 - **Session Resilience**: Response interceptors automatically handle **401 Unauthorized** and **Network Errors** (e.g., backend crash) by logging out the user.
 - **Smart Deletion Logic**: The "Delete" button is conditionally hidden for completed tasks to prevent accidental data loss.
+- **Restart Logic**: Restart functionality is disabled for tasks that are already restarts (clones), ensuring clean audit trails.
 - **Custom Confirmation**: Critical actions (like deletion) trigger a branded Material UI Dialog instead of browser alerts.
 - **Navigation Safety**: Protected routes use `replace: true` logic to prevent "Back Button Loops" after logout.
 - **Defensive UI**: Graceful handling of empty states, loading skeletons, and error boundaries.

@@ -182,14 +182,23 @@ const Dashboard = () => {
     }
   };
 
-  const handleRestartTask = async (task) => {
-    if (window.confirm(`Restarting this operation will create a NEW task with the same specifications. Continue?`)) {
+  const [restartConfirmationOpen, setRestartConfirmationOpen] = useState(false);
+  const [taskToRestart, setTaskToRestart] = useState(null);
+  const [restartedIds, setRestartedIds] = useState([]);
+
+  const handleRestartTask = (task) => {
+    setTaskToRestart(task);
+    setRestartConfirmationOpen(true);
+  };
+
+  const confirmRestartTask = async () => {
+    if (taskToRestart) {
       const username = localStorage.getItem(USERNAME_KEY);
       const clonedTask = {
-        title: `(RESTARTED) ${task.title}`,
-        description: task.description,
-        priority: task.priority,
-        dueDate: task.dueDate,
+        title: `(RESTARTED) ${taskToRestart.title}`,
+        description: taskToRestart.description,
+        priority: taskToRestart.priority,
+        dueDate: taskToRestart.dueDate,
         status: 'Open',
         createdBy: username,
         modifiedBy: username
@@ -197,7 +206,10 @@ const Dashboard = () => {
 
       try {
         await taskService.createTask(clonedTask);
+        setRestartedIds(prev => [...prev, taskToRestart.id]);
         fetchTasks();
+        setRestartConfirmationOpen(false);
+        setTaskToRestart(null);
       } catch (err) {
         setError('Failed to restart task as new entry.');
       }
@@ -412,6 +424,7 @@ const Dashboard = () => {
                   onDeleteTask={handleDeleteTask} 
                   onEditTask={handleEditTask}
                   onRestartTask={handleRestartTask}
+                  restartedIds={restartedIds}
                 />
               </Box>
               <Box sx={{ p: 1, bgcolor: 'rgba(15, 23, 42, 0.3)' }}>
@@ -656,6 +669,49 @@ const Dashboard = () => {
         />
       )}
 
+      {/* Restart Confirmation Dialog */}
+      <Dialog
+        open={restartConfirmationOpen}
+        onClose={() => setRestartConfirmationOpen(false)}
+        PaperProps={{
+          sx: {
+            bgcolor: '#0a0f1e',
+            backgroundImage: 'none',
+            borderRadius: 4,
+            border: '1px solid rgba(99, 102, 241, 0.3)',
+            minWidth: 400,
+            boxShadow: '0 20px 40px rgba(0,0,0,0.6)'
+          }
+        }}
+      >
+        <DialogTitle sx={{ color: '#f8fafc', fontWeight: 900, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <RefreshIcon sx={{ color: '#6366f1' }} /> CONFIRM RESTART
+        </DialogTitle>
+        <DialogContent>
+          <Typography sx={{ color: '#f8fafc', mb: 2 }}>
+            Restarting this operation will create a NEW task with the same specifications. Continue?
+          </Typography>
+        </DialogContent>
+        <DialogActions sx={{ p: 3, pt: 0 }}>
+          <Button onClick={() => setRestartConfirmationOpen(false)} sx={{ color: '#f8fafc', fontWeight: 800 }}>
+            CANCEL
+          </Button>
+          <Button 
+            onClick={confirmRestartTask} 
+            variant="contained" 
+            sx={{ 
+              bgcolor: '#6366f1', 
+              color: 'white', 
+              fontWeight: 900, 
+              borderRadius: 3,
+              '&:hover': { bgcolor: '#4f46e5' }
+            }}
+          >
+            RESTART
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       {/* Delete Confirmation Dialog */}
       <Dialog
         open={deleteConfirmationOpen}
@@ -671,16 +727,16 @@ const Dashboard = () => {
           }
         }}
       >
-        <DialogTitle sx={{ color: '#ef4444', fontWeight: 900, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
-          <CancelIcon /> CONFIRM DELETION
+        <DialogTitle sx={{ color: '#f8fafc', fontWeight: 900, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <CancelIcon sx={{ color: '#ef4444' }} /> CONFIRM DELETION
         </DialogTitle>
         <DialogContent>
-          <Typography sx={{ color: '#94a3b8', mb: 2 }}>
+          <Typography sx={{ color: '#f8fafc', mb: 2 }}>
             Are you sure you want to permanently delete this task? This action cannot be undone.
           </Typography>
         </DialogContent>
         <DialogActions sx={{ p: 3, pt: 0 }}>
-          <Button onClick={() => setDeleteConfirmationOpen(false)} sx={{ color: '#94a3b8', fontWeight: 800 }}>
+          <Button onClick={() => setDeleteConfirmationOpen(false)} sx={{ color: '#f8fafc', fontWeight: 800 }}>
             CANCEL
           </Button>
           <Button 
