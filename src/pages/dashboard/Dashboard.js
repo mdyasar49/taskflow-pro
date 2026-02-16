@@ -161,11 +161,21 @@ const Dashboard = () => {
     setEditingTask(null);
   };
 
-  const handleDeleteTask = async (id) => {
-    if (window.confirm('Are you sure you want to delete this task?')) {
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
+  const [taskToDelete, setTaskToDelete] = useState(null);
+
+  const handleDeleteTask = (id) => {
+    setTaskToDelete(id);
+    setDeleteConfirmationOpen(true);
+  };
+
+  const confirmDeleteTask = async () => {
+    if (taskToDelete) {
       try {
-        await taskService.deleteTask(id);
+        await taskService.deleteTask(taskToDelete);
         fetchTasks();
+        setDeleteConfirmationOpen(false);
+        setTaskToDelete(null);
       } catch (err) {
         setError('Failed to delete task.');
       }
@@ -645,6 +655,49 @@ const Dashboard = () => {
           onClose={handleCloseForm} 
         />
       )}
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog
+        open={deleteConfirmationOpen}
+        onClose={() => setDeleteConfirmationOpen(false)}
+        PaperProps={{
+          sx: {
+            bgcolor: '#0a0f1e',
+            backgroundImage: 'none',
+            borderRadius: 4,
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            minWidth: 400,
+            boxShadow: '0 20px 40px rgba(0,0,0,0.6)'
+          }
+        }}
+      >
+        <DialogTitle sx={{ color: '#ef4444', fontWeight: 900, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <CancelIcon /> CONFIRM DELETION
+        </DialogTitle>
+        <DialogContent>
+          <Typography sx={{ color: '#94a3b8', mb: 2 }}>
+            Are you sure you want to permanently delete this task? This action cannot be undone.
+          </Typography>
+        </DialogContent>
+        <DialogActions sx={{ p: 3, pt: 0 }}>
+          <Button onClick={() => setDeleteConfirmationOpen(false)} sx={{ color: '#94a3b8', fontWeight: 800 }}>
+            CANCEL
+          </Button>
+          <Button 
+            onClick={confirmDeleteTask} 
+            variant="contained" 
+            sx={{ 
+              bgcolor: '#ef4444', 
+              color: 'white', 
+              fontWeight: 900, 
+              borderRadius: 3,
+              '&:hover': { bgcolor: '#dc2626' }
+            }}
+          >
+            DELETE
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

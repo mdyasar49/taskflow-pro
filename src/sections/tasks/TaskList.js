@@ -304,21 +304,23 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                           </Tooltip>
                         </>
                       )}
-                      <Tooltip title="DELETE DATA">
-                        <IconButton 
-                          size="small"
-                          onClick={() => onDeleteTask(task.id)} 
-                          sx={{ 
-                            color: '#ef4444', 
-                            '&:hover': { 
-                              bgcolor: 'rgba(239, 68, 68, 0.1)',
-                              transform: 'scale(1.2)'
-                            } 
-                          }}
-                        >
-                          <DeleteIcon sx={{ fontSize: 18 }} />
-                        </IconButton>
-                      </Tooltip>
+                      {task.status !== 'Done' && (
+                        <Tooltip title="DELETE DATA">
+                          <IconButton 
+                            size="small"
+                            onClick={() => onDeleteTask(task.id)} 
+                            sx={{ 
+                              color: '#ef4444', 
+                              '&:hover': { 
+                                bgcolor: 'rgba(239, 68, 68, 0.1)',
+                                transform: 'scale(1.2)'
+                              } 
+                            }}
+                          >
+                            <DeleteIcon sx={{ fontSize: 18 }} />
+                          </IconButton>
+                        </Tooltip>
+                      )}
                     </Stack>
                   </TableCell>
                 </TableRow>
