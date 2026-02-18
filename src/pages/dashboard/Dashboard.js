@@ -568,9 +568,9 @@ const Dashboard = () => {
               TASKFLOW
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <IconButton onClick={toggleColorMode} color="inherit" sx={{ mr: 1 }}>
+              {/* <IconButton onClick={toggleColorMode} color="inherit" sx={{ mr: 1 }}>
                 {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-              </IconButton>
+              </IconButton> */}
               <Button
                 onClick={handleMenuOpen}
                 sx={{ 
