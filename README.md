@@ -1,174 +1,89 @@
-# 🎨 Task Management System - Frontend (React 19)
+# Task Management System - Frontend
 
-![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react)
-![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=for-the-badge&logo=vite)
-![MUI](https://img.shields.io/badge/Material_UI-v5-007FFF?style=for-the-badge&logo=mui)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript)
+A high-fidelity "Cyber Intelligence" Task Management dashboard built with **React 19**, **Vite**, and **Material UI**. This application is engineered for situational awareness and high-pressure task tracking with a premium, responsive interface.
 
-> **A premium "Cyber Intelligence" themed operational dashboard for enterprise task management.**
+## 🎨 Design Philosophy: "Operational Resilience"
 
----
+The UI features a specialized **Indigo & Cobalt** palette designed for high data density and reduced cognitive load.
 
-## 🌟 Executive Summary
+- **Primary Action**: Indigo (`#6366f1`) - Create, Save, Submit.
+- **Active State**: Cobalt (`#3b82f6`) - Running Tasks, Tabs.
+- **Glassmorphism**: High-blur surfaces (`backdrop-filter: blur(20px)`) for modern depth.
+- **Micro-interactions**: Subtle hover effects and tactile feedback across all interactive elements.
 
-The **Task Management System Frontend** is a cutting-edge Single Page Application (SPA) built with **React 19** and **Vite**. It features a specialized **"Cyber Intelligence"** UI theme optimized for high-stakes operational environments, reducing eye strain during long shifts while providing high-density data visualization.
+## 🚀 Key Features
 
-This frontend seamlessly integrates with the Spring Boot backend via **JWT Authentication**, ensuring secure, stateless interaction for all operations.
-
----
-
-## ✨ Key Features (Interview Highlights)
-
-### 🎨 Cyber-Intelligence Design System
-
-- **Ergonomic Dark Mode**: Custom **Indigo & Cobalt** palette reducing blue-light fatigue.
-- **Glassmorphism**: High-performance backdrop blurs for depth and hierarchy.
-- **Visual Status Indicators**: Color-coded badges for instant status recognition (e.g., 🔴 HIGH Priority, 🔵 RUNNING).
-
-### ⚡ Technical Excellence
-
-- **React 19 & Vite**: Lightning-fast HMR (Hot Module Replacement) and optimized production builds.
-- **Material UI (MUI) v5**: Custom-themed component library for consistent design.
-- **Responsive Layout**: Fluid grid system adapting from desktop command centers to mobile devices.
-
-### 🛡️ Security & Integrity
-
-- **JWT Handling**: Secure storage and automatic header injection via Axios interceptors.
-- **Session Resilience**: Response interceptors automatically handle **401 Unauthorized** and **Network Errors** (e.g., backend crash) by logging out the user.
-- **Smart Deletion Logic**: The "Delete" button is conditionally hidden for completed tasks to prevent accidental data loss.
-- **Restart Logic**: Restart functionality is disabled for tasks that are already restarts (clones), ensuring clean audit trails.
-- **Custom Confirmation**: Critical actions (like deletion) trigger a branded Material UI Dialog instead of browser alerts.
-- **Navigation Safety**: Protected routes use `replace: true` logic to prevent "Back Button Loops" after logout.
-- **Defensive UI**: Graceful handling of empty states, loading skeletons, and error boundaries.
-
----
-
-## 🎤 Key Interview Talking Points
-
-> **Quick Pitches for Technical Screening**
-
-### **1. Why React 19?**
-
-"I chose React 19 to leverage the latest concurrency features and automatic batching, ensuring disjoint state updates don't cause unnecessary re-renders. Combined with **Vite**, this provides a sub-100ms startup time."
-
-### **2. Security First**
-
-"The application implements **secure JWT handling** using Axios interceptors. This ensures every request is authenticated by default, eliminating the risk of developers forgetting to add authorization headers manually."
-
-### **3. Scalable Architecture**
-
-"I structured the project by **feature modules** (e.g., `sections/tasks/`) rather than technical type. This means all logic, styles, and tests for a feature live together, making the codebase highly maintainable as it scales."
-
----
+- **Dynamic Dashboard**: Interactive task management with multiple view support (Analysis, Tasks, etc.).
+- **User Authentication**: Secure JWT-based Login and Registration system.
+- **Task Analysis**: Visual insights and status-driven data representation.
+- **Responsive Layout**: Fully optimized for mobile and desktop using a modular grid system.
+- **Dark/Light Mode**: Custom theming engine powered by MUI and React Context.
+- **Smart Task Management**:
+  - **Defensive Validation**: Real-time form validation.
+  - **Optimistic Updates**: Instant UI feedback on task actions.
+  - **State-Aware Actions**: Context-sensitive task controls (e.g., preventing duplicate restarts).
 
 ## 🛠️ Technology Stack
 
-| Category           | Technology               | Usage                  |
-| ------------------ | ------------------------ | ---------------------- |
-| **Core Framework** | React 19.2.0             | UI Components & State  |
-| **Build Tool**     | Vite 5.4.11              | Dev Server & Bundling  |
-| **Styling**        | Material UI (MUI)        | Design System          |
-| **HTTP Client**    | Axios                    | API Communication      |
-| **Routing**        | React Router DOM         | Client-side Navigation |
-| **Icons**          | Lucide React / MUI Icons | Visual Elements        |
+- **Core**: React 19, Vite
+- **Styling**: Material UI (MUI) v7, Emotion
+- **Icons**: Lucide React, MUI Icons
+- **Routing**: React Router DOM v7
+- **Networking**: Axios with Request Interceptors
+- **State Management**: React Context & Hooks
 
----
+## 📁 Project Structure
 
-## 🚀 Getting Started
+```text
+src/
+├── components/   # Atomic UI components & Private Routes
+├── context/      # Theme and Auth context providers
+├── pages/        # High-level page modules (Auth, Dashboard)
+├── sections/     # Modular dashboard components (TaskList, TaskForm)
+├── services/     # API service layers (AuthService, TaskService)
+├── utils/        # Tactical helper functions
+└── App.js        # Core routing and application entry
+```
+
+## ⚙️ Development Setup
 
 ### Prerequisites
 
-- **Node.js 18+**
-- **npm 9+**
+- Node.js (v18+)
+- npm or yarn
 
-### Installation & Run
+### Installation
 
-1. **Clone & Install**
+1. Navigate to the frontend directory:
 
    ```bash
-   git clone <repository-url>
-   cd "task manager"
+   cd "taskflow pro"
+   ```
+
+2. Install dependencies:
+
+   ```bash
    npm install
    ```
 
-2. **Start Development Server**
+3. Environment Configuration:
+   Create a `.env` file:
 
-   ```bash
-   npm start
+   ```env
+   VITE_API_BASE_URL=http://localhost:8080/api
    ```
 
-   > **Note:** We have optimized the start command. `npm start` is now an alias for `vite` (same as `npm run dev`).
-
-   The application will launch at `http://localhost:5173`.
-
-3. **Build for Production**
+4. Run Development Server:
    ```bash
-   npm run build
+   npm run dev
    ```
 
----
+## 🛡️ Security & Resilience
 
-## 📂 Project Structure
-
-A scalable, feature-first directory structure:
-
-```
-src/
-├── components/        # 🧩 Reusable UI atoms (Buttons, Cards)
-├── pages/            # 📱 Route-level views (Dashboard, Login)
-├── sections/         # 📦 Feature-specific modules (Tasks)
-│   └── tasks/
-│       ├── TaskForm.js    # Create/Edit logic
-│       └── TaskList.js    # Data grid & filtering
-├── services/         # 🔌 API Integration Layer
-│   ├── authService.js     # Login/Register strategies
-│   └── taskService.js     # CRUD endpoints
-├── utils/            # 🛠️ Helpers (Date formatting, Validation)
-└── App.js            # 🚦 Routing & Layout Configuration
-```
+- **Session Management**: JWT tokens stored in `localStorage`.
+- **Axios Interceptors**: Automatic header injection and 401/Network error handling.
+- **Route Guards**: Prevents unauthorized access to sensitive dashboard views.
 
 ---
 
-## 🔌 API Integration
-
-The application communicates with the backend at `http://localhost:8080/api`.
-
-**Authentication Flow:**
-
-1. User logs in → Server verifies credentials.
-2. Server returns **JWT Token**.
-3. Frontend caches token in `localStorage`.
-4. **Axios Interceptor** attaches `Authorization: Bearer <token>` to every subsequent request.
-
----
-
-## 🧪 Testing & Validation
-
-**Pre-Interview Checklist:**
-
-- [ ] **Login Flow**: Verify admin/admin123 logs in successfully.
-- [ ] **Task Creation**: Create a task with "HIGH" priority (should appear Red).
-- [ ] **Responsiveness**: Resize window to check mobile view.
-- [ ] **Error Handling**: Try logging in with wrong password (should show red alert).
-
----
-
-## 🚨 Troubleshooting
-
-| Issue               | Solution                                                             |
-| ------------------- | -------------------------------------------------------------------- |
-| **App won't start** | Ensure no other process is using port 5173. Kill terminal and retry. |
-| **"Network Error"** | Verify Backend is running on port 8080.                              |
-| **Login Fails**     | Check `localStorage` in DevTools to ensure token is being saved.     |
-| **Styles Broken**   | Run `npm install` again to ensure MUI dependencies are correct.      |
-
----
-
-## 👨‍💻 Author
-
-**Mohamed Yasar A.**
-_Full Stack Developer | React & Spring Boot Specialist_
-
----
-
-_Last Updated: February 2026_
+_Maintained by the Core Engineering Team_
