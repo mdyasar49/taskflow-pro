@@ -154,15 +154,17 @@ const Register = () => {
               autoFocus
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } }}
-              InputProps={{
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
-                  '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
-                  '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                input: {
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
+                    '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
+                    '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+                  }
                 }
               }}
               sx={{ mb: 2 }}
@@ -175,23 +177,25 @@ const Register = () => {
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } }}
-              InputProps={{
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
-                  '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
-                  '&.Mui-focused fieldset': { borderColor: '#6366f1' }
-                },
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                )
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                input: {
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
+                    '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
+                    '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+                  },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }
               }}
               sx={{ mb: 2 }}
             />
@@ -203,15 +207,17 @@ const Register = () => {
               type={showPassword ? 'text' : 'password'}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              InputLabelProps={{ sx: { color: 'rgba(16, 185, 129, 0.4)', fontWeight: 800 } }}
-              InputProps={{
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(16, 185, 129, 0.2)' },
-                  '&:hover fieldset': { borderColor: 'rgba(16, 185, 129, 0.4)' },
-                  '&.Mui-focused fieldset': { borderColor: '#10b981' }
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(16, 185, 129, 0.4)', fontWeight: 800 } },
+                input: {
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(16, 185, 129, 0.2)' },
+                    '&:hover fieldset': { borderColor: 'rgba(16, 185, 129, 0.4)' },
+                    '&.Mui-focused fieldset': { borderColor: '#10b981' }
+                  }
                 }
               }}
               sx={{ mb: 4 }}

@@ -357,20 +357,22 @@ const Dashboard = () => {
                 variant="outlined"
                 size="small"
                 fullWidth
-                InputProps={{
-                  startAdornment: <SearchIcon color="disabled" sx={{ mr: 1, fontSize: 22 }} />,
-                  sx: { 
-                    borderRadius: 3, 
-                    bgcolor: 'rgba(15, 23, 42, 0.5)', 
-                    color: 'white',
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'rgba(99, 102, 241, 0.2)',
-                    },
-                    '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'rgba(99, 102, 241, 0.5)',
-                    },
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#6366f1',
+                slotProps={{
+                  input: {
+                    startAdornment: <SearchIcon color="disabled" sx={{ mr: 1, fontSize: 22 }} />,
+                    sx: { 
+                      borderRadius: 3, 
+                      bgcolor: 'rgba(15, 23, 42, 0.5)', 
+                      color: 'white',
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: 'rgba(99, 102, 241, 0.2)',
+                      },
+                      '&:hover .MuiOutlinedInput-notchedOutline': {
+                        borderColor: 'rgba(99, 102, 241, 0.5)',
+                      },
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#6366f1',
+                      }
                     }
                   }
                 }}
@@ -473,19 +475,21 @@ const Dashboard = () => {
               type={showPassword ? 'text' : 'password'}
               value={passwordData.current}
               onChange={(e) => setPasswordData({ ...passwordData, current: e.target.value })}
-              InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } }}
-              InputProps={{
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
-                },
-                endAdornment: (
-                  <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
-                    {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                  </IconButton>
-                )
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                input: {
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
+                  },
+                  endAdornment: (
+                    <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
+                      {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                    </IconButton>
+                  )
+                }
               }}
             />
             <TextField
@@ -495,14 +499,16 @@ const Dashboard = () => {
               type={showPassword ? 'text' : 'password'}
               value={passwordData.new}
               onChange={(e) => setPasswordData({ ...passwordData, new: e.target.value })}
-              InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } }}
-              InputProps={{ 
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
-                } 
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                input: { 
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
+                  } 
+                }
               }}
             />
             <TextField
@@ -512,14 +518,16 @@ const Dashboard = () => {
               type={showPassword ? 'text' : 'password'}
               value={passwordData.confirm}
               onChange={(e) => setPasswordData({ ...passwordData, confirm: e.target.value })}
-              InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } }}
-              InputProps={{ 
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
-                } 
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                input: { 
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
+                  } 
+                }
               }}
             />
           </Stack>

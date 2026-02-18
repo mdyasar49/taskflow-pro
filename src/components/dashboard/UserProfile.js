@@ -130,17 +130,19 @@ const UserProfile = ({
                     value={editUsername}
                     onChange={(e) => setEditUsername(e.target.value)}
                     autoFocus
-                    InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.6)', fontWeight: 800 } }}
-                    InputProps={{
-                      sx: { 
-                        color: 'white', 
-                        fontWeight: 900, 
-                        fontSize: '1.2rem', 
-                        textAlign: 'center',
-                        bgcolor: 'rgba(0,0,0,0.4)',
-                        borderRadius: 3,
-                        '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
-                        '&:hover fieldset': { borderColor: '#6366f1' }
+                    slotProps={{
+                      inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.6)', fontWeight: 800 } },
+                      input: {
+                        sx: { 
+                          color: 'white', 
+                          fontWeight: 900, 
+                          fontSize: '1.2rem', 
+                          textAlign: 'center',
+                          bgcolor: 'rgba(0,0,0,0.4)',
+                          borderRadius: 3,
+                          '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
+                          '&:hover fieldset': { borderColor: '#6366f1' }
+                        }
                       }
                     }}
                     sx={{ mb: 3 }}

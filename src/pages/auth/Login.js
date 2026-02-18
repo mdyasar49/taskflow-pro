@@ -135,7 +135,7 @@ const Login = () => {
             </Alert>
           )}
           
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogin} autoComplete="off">
             <TextField
               margin="normal"
               required
@@ -144,15 +144,18 @@ const Login = () => {
               autoFocus
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } }}
-              InputProps={{
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
-                  '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
-                  '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+              autoComplete="off"
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                input: {
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
+                    '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
+                    '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+                  }
                 }
               }}
               sx={{ mb: 2 }}
@@ -165,23 +168,26 @@ const Login = () => {
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              InputLabelProps={{ sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } }}
-              InputProps={{
-                sx: { 
-                  color: 'white', 
-                  bgcolor: 'rgba(0,0,0,0.2)', 
-                  borderRadius: 3,
-                  '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
-                  '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
-                  '&.Mui-focused fieldset': { borderColor: '#6366f1' }
-                },
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                )
+              autoComplete="new-password"
+              slotProps={{
+                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                input: {
+                  sx: { 
+                    color: 'white', 
+                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    borderRadius: 3,
+                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
+                    '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
+                    '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+                  },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }
               }}
               sx={{ mb: 4 }}
             />

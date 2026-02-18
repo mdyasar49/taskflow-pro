@@ -139,9 +139,11 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 onChange={(e) => setTitle(e.target.value)}
                 autoFocus
                 disabled={isReadOnly}
-                InputProps={{
-                  startAdornment: <TitleIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                  sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                slotProps={{
+                  input: {
+                    startAdornment: <TitleIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
+                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                  }
                 }}
               />
             </Box>
@@ -158,9 +160,11 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 disabled={isReadOnly}
-                InputProps={{
-                  startAdornment: <DescIcon sx={{ color: '#6366f1', mr: 1, mt: 1, alignSelf: 'flex-start', fontSize: 18 }} />,
-                  sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                slotProps={{
+                  input: {
+                    startAdornment: <DescIcon sx={{ color: '#6366f1', mr: 1, mt: 1, alignSelf: 'flex-start', fontSize: 18 }} />,
+                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                  }
                 }}
               />
             </Box>
@@ -176,9 +180,11 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   onChange={(e) => setStatus(e.target.value)}
                   disabled={isReadOnly}
                   fullWidth
-                  InputProps={{
-                    startAdornment: <StatusIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                  slotProps={{
+                    input: {
+                      startAdornment: <StatusIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
+                      sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                    }
                   }}
                 >
                   <MenuItem value="Open" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem' }}>PENDING</MenuItem>
@@ -200,9 +206,11 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   onChange={(e) => setPriority(e.target.value)}
                   disabled={isReadOnly}
                   fullWidth
-                  InputProps={{
-                    startAdornment: <StatusIcon sx={{ color: priority === 'HIGH' ? '#ef4444' : priority === 'MEDIUM' ? '#f59e0b' : '#3b82f6', mr: 1, fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                  slotProps={{
+                    input: {
+                      startAdornment: <StatusIcon sx={{ color: priority === 'HIGH' ? '#ef4444' : priority === 'MEDIUM' ? '#f59e0b' : '#3b82f6', mr: 1, fontSize: 18 }} />,
+                      sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                    }
                   }}
                 >
                   <MenuItem value="HIGH" sx={{ py: 1, fontWeight: 700, fontSize: '0.8rem', color: '#ef4444' }}>HIGH PRIORITY</MenuItem>
@@ -221,10 +229,14 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   value={dueDate}
                   onChange={(e) => setDueDate(e.target.value)}
                   disabled={isReadOnly}
-                  InputProps={{
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                  slotProps={{
+                    input: {
+                      sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                    },
+                    inputLabel: {
+                      shrink: true
+                    }
                   }}
-                  InputLabelProps={{ shrink: true }}
                 />
               </Grid>
             </Grid>
