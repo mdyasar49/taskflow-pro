@@ -12,7 +12,8 @@ import {
   CircularProgress,
   Stack,
   IconButton,
-  InputAdornment
+  InputAdornment,
+  useTheme
 } from '@mui/material';
 import { 
   PersonAdd, 
@@ -30,6 +31,7 @@ const Register = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -69,28 +71,32 @@ const Register = () => {
       display: 'flex', 
       alignItems: 'center', 
       justifyContent: 'center',
-      background: '#020617',
-      backgroundImage: `
+      bgcolor: 'background.default',
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundImage: theme.palette.mode === 'dark' ? `
         radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
         radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.12) 0, transparent 50%),
         radial-gradient(at 50% 100%, rgba(99, 102, 241, 0.08) 0, transparent 50%)
-      `,
-      position: 'relative',
-      overflow: 'hidden'
+      ` : `
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(99, 102, 241, 0.05) 0, transparent 50%)
+      `
     }}>
       {/* Background Orbs */}
-      <Box sx={{ position: 'absolute', width: '40vw', height: '40vw', bgcolor: 'rgba(99, 102, 241, 0.03)', borderRadius: '50%', filter: 'blur(80px)', top: -100, left: -100, animation: 'float 8s infinite ease-in-out' }} />
-      <Box sx={{ position: 'absolute', width: '30vw', height: '30vw', bgcolor: 'rgba(6, 182, 212, 0.03)', borderRadius: '50%', filter: 'blur(80px)', bottom: -50, right: -50, animation: 'float 10s infinite ease-in-out reverse' }} />
+      <Box sx={{ position: 'absolute', width: '40vw', height: '40vw', bgcolor: theme.palette.mode === 'dark' ? 'rgba(99, 102, 241, 0.03)' : 'rgba(99, 102, 241, 0.05)', borderRadius: '50%', filter: 'blur(80px)', top: -100, left: -100, animation: 'float 8s infinite ease-in-out' }} />
+      <Box sx={{ position: 'absolute', width: '30vw', height: '30vw', bgcolor: theme.palette.mode === 'dark' ? 'rgba(6, 182, 212, 0.03)' : 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(80px)', bottom: -50, right: -50, animation: 'float 10s infinite ease-in-out reverse' }} />
 
       <Container maxWidth="xs" className="animate-fade-in" sx={{ position: 'relative', zIndex: 1 }}>
         <Box sx={{ mb: 4, textAlign: 'center' }}>
           <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" sx={{ mb: 1 }}>
             <StatsIcon sx={{ color: '#6366f1', fontSize: 32 }} />
-            <Typography variant="h4" sx={{ fontWeight: 900, letterSpacing: -1, color: 'white' }}>
+            <Typography variant="h4" sx={{ fontWeight: 900, letterSpacing: -1, color: 'text.primary' }}>
               TASKFLOW
             </Typography>
           </Stack>
-          <Typography variant="body2" sx={{ color: '#94a3b8', fontWeight: 600, letterSpacing: 1.5, opacity: 0.8 }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 600, letterSpacing: 1.5, opacity: 0.8 }}>
             IDENTITY FORMATION CENTER
           </Typography>
         </Box>
@@ -100,17 +106,19 @@ const Register = () => {
           sx={{ 
             p: 4, 
             width: '100%', 
-            bgcolor: 'rgba(15, 23, 42, 0.7)', 
+            bgcolor: 'background.paper',
             backdropFilter: 'blur(20px)',
             borderRadius: 6,
-            border: '1px solid rgba(99, 102, 241, 0.15)',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+            border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(99, 102, 241, 0.15)' : 'rgba(99, 102, 241, 0.2)'}`,
+            boxShadow: theme.palette.mode === 'dark' 
+              ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+              : '0 25px 50px -12px rgba(99, 102, 241, 0.15)'
           }}
         >
-          <Typography variant="h5" align="center" sx={{ color: 'white', fontWeight: 900, mb: 1 }}>
+          <Typography variant="h5" align="center" sx={{ color: 'text.primary', fontWeight: 900, mb: 1 }}>
             Join the Network
           </Typography>
-          <Typography variant="body2" align="center" sx={{ color: '#64748b', mb: 4, fontWeight: 500 }}>
+          <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mb: 4, fontWeight: 500 }}>
             Establish your neural link and start managing initiatives.
           </Typography>
           
@@ -155,11 +163,11 @@ const Register = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               slotProps={{
-                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                inputLabel: { sx: { color: 'primary.main', fontWeight: 800 } },
                 input: {
                   sx: { 
-                    color: 'white', 
-                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    color: 'text.primary', 
+                    bgcolor: 'action.hover', 
                     borderRadius: 3,
                     '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
                     '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
@@ -178,11 +186,11 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               slotProps={{
-                inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
+                inputLabel: { sx: { color: 'primary.main', fontWeight: 800 } },
                 input: {
                   sx: { 
-                    color: 'white', 
-                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    color: 'text.primary', 
+                    bgcolor: 'action.hover', 
                     borderRadius: 3,
                     '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
                     '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
@@ -190,7 +198,7 @@ const Register = () => {
                   },
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
+                      <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'text.secondary' }}>
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
@@ -208,11 +216,11 @@ const Register = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               slotProps={{
-                inputLabel: { sx: { color: 'rgba(16, 185, 129, 0.4)', fontWeight: 800 } },
+                inputLabel: { sx: { color: 'rgba(16, 185, 129, 0.6)', fontWeight: 800 } },
                 input: {
                   sx: { 
-                    color: 'white', 
-                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    color: 'text.primary', 
+                    bgcolor: 'action.hover', 
                     borderRadius: 3,
                     '& fieldset': { borderColor: 'rgba(16, 185, 129, 0.2)' },
                     '&:hover fieldset': { borderColor: 'rgba(16, 185, 129, 0.4)' },
@@ -244,7 +252,7 @@ const Register = () => {
             </Button>
             <Box textAlign="center">
               <Link to="/login" style={{ textDecoration: 'none' }}>
-                <Typography variant="body2" sx={{ color: '#6366f1', fontWeight: 800, '&:hover': { color: '#818cf8' } }}>
+                <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 800, '&:hover': { color: '#818cf8' } }}>
                   EXISTING IDENTITY? SECURE SIGN IN
                 </Typography>
               </Link>

@@ -60,7 +60,7 @@ const UserProfile = ({
               sx={{ 
                 p: 4, 
                 borderRadius: 8, 
-                bgcolor: 'rgba(15, 23, 42, 0.7)', 
+                bgcolor: 'background.paper', 
                 backdropFilter: 'blur(30px)',
                 border: '1px solid rgba(99, 102, 241, 0.2)',
                 textAlign: 'center',
@@ -112,7 +112,8 @@ const UserProfile = ({
                     width: 28, 
                     height: 28, 
                     borderRadius: '50%', 
-                    border: '4px solid #0f172a',
+                    border: '4px solid',
+                    borderColor: 'background.paper',
                     boxShadow: '0 0 15px #6366f1',
                     animation: 'pulse 2s infinite'
                   }} 
@@ -134,11 +135,11 @@ const UserProfile = ({
                       inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.6)', fontWeight: 800 } },
                       input: {
                         sx: { 
-                          color: 'white', 
+                          color: 'text.primary', 
                           fontWeight: 900, 
                           fontSize: '1.2rem', 
                           textAlign: 'center',
-                          bgcolor: 'rgba(0,0,0,0.4)',
+                          bgcolor: 'action.hover',
                           borderRadius: 3,
                           '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
                           '&:hover fieldset': { borderColor: '#6366f1' }
@@ -182,7 +183,7 @@ const UserProfile = ({
                 </Box>
               ) : (
                 <>
-                  <Typography variant="h4" sx={{ fontWeight: 900, color: 'white', mb: 0.5, letterSpacing: -1 }}>
+                  <Typography variant="h4" sx={{ fontWeight: 900, color: 'text.primary', mb: 0.5, letterSpacing: -1 }}>
                     {localStorage.getItem(USERNAME_KEY)}
                   </Typography>
                   <Typography variant="body1" sx={{ color: '#6366f1', fontWeight: 800, mb: 4, textTransform: 'uppercase', letterSpacing: 2, fontSize: '0.75rem' }}>
@@ -229,7 +230,7 @@ const UserProfile = ({
                   <SecurityIcon sx={{ color: '#6366f1', fontSize: 24 }} />
                   <Box textAlign="left">
                      <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', lineHeight: 1, fontWeight: 800, letterSpacing: 1 }}>ACCESS PRIVILEGE</Typography>
-                     <Typography variant="body2" sx={{ fontWeight: 900, color: '#f8fafc', fontSize: '0.9rem' }}>LEVEL 04 - ROOT CONTROL</Typography>
+                     <Typography variant="body2" sx={{ fontWeight: 900, color: 'text.primary', fontSize: '0.9rem' }}>LEVEL 04 - ROOT CONTROL</Typography>
                   </Box>
                 </Box>
                 
@@ -248,7 +249,7 @@ const UserProfile = ({
                   <StatsIcon sx={{ color: '#f59e0b', fontSize: 24 }} />
                   <Box textAlign="left">
                      <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', lineHeight: 1, fontWeight: 800, letterSpacing: 1 }}>SYNCHRONIZATION</Typography>
-                     <Typography variant="body2" sx={{ fontWeight: 900, color: '#f8fafc', fontSize: '0.9rem' }}>ACTIVE_OPERATIONAL</Typography>
+                     <Typography variant="body2" sx={{ fontWeight: 900, color: 'text.primary', fontSize: '0.9rem' }}>ACTIVE_OPERATIONAL</Typography>
                   </Box>
                 </Box>
 
@@ -268,14 +269,14 @@ const UserProfile = ({
                   <PasswordIcon sx={{ color: '#ec4899', fontSize: 24 }} />
                   <Box textAlign="left" sx={{ flex: 1 }}>
                      <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', lineHeight: 1, fontWeight: 800, letterSpacing: 1 }}>ENCRYPTION KEY</Typography>
-                     <Typography variant="body2" sx={{ fontWeight: 900, color: '#f8fafc', letterSpacing: 3, fontSize: '0.9rem' }}>
+                     <Typography variant="body2" sx={{ fontWeight: 900, color: 'text.primary', letterSpacing: 3, fontSize: '0.9rem' }}>
                       {showPassword ? 'Admin@2026' : '••••••••••••'}
                      </Typography>
                   </Box>
                   <IconButton 
                     size="small" 
                     onClick={() => setShowPassword(!showPassword)}
-                    sx={{ color: 'rgba(255,255,255,0.4)', '&:hover': { color: 'white', bgcolor: 'rgba(255,255,255,0.1)' } }}
+                    sx={{ color: 'action.active', '&:hover': { color: 'text.primary', bgcolor: 'action.hover' } }}
                   >
                     {showPassword ? <VisibilityOffIcon sx={{ fontSize: 20 }} /> : <VisibilityIcon sx={{ fontSize: 20 }} />}
                   </IconButton>
@@ -293,14 +294,14 @@ const UserProfile = ({
                  sx={{ 
                    p: 4, 
                    borderRadius: 8, 
-                   bgcolor: 'rgba(15, 23, 42, 0.7)', 
+                   bgcolor: 'background.paper', 
                    backdropFilter: 'blur(30px)',
                    border: '1px solid rgba(99, 102, 241, 0.15)',
                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.6)'
                  }}
               >
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-                   <Typography variant="h6" sx={{ fontWeight: 900, color: 'white', display: 'flex', alignItems: 'center', gap: 1.5, letterSpacing: 0.5 }}>
+                   <Typography variant="h6" sx={{ fontWeight: 900, color: 'text.primary', display: 'flex', alignItems: 'center', gap: 1.5, letterSpacing: 0.5 }}>
                      <StatsIcon sx={{ color: '#6366f1' }} /> SYSTEM PERFORMANCE MATRIX
                    </Typography>
                    <Box sx={{ bgcolor: 'rgba(99, 102, 241, 0.15)', px: 2, py: 0.8, borderRadius: 2, border: '1px solid rgba(99, 102, 241, 0.3)' }}>
@@ -310,8 +311,8 @@ const UserProfile = ({
 
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={6}>
-                    <Paper sx={{ p: 4, borderRadius: 6, bgcolor: 'rgba(15, 23, 42, 0.5)', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease', '&:hover': { border: '1px solid rgba(255,255,255,0.1)', transform: 'translateY(-4px)' } }}>
-                      <Typography variant="h2" sx={{ fontWeight: 900, color: 'white', mb: 1, letterSpacing: -2 }}>{stats.total}</Typography>
+                    <Paper sx={{ p: 4, borderRadius: 6, bgcolor: 'background.paper', border: '1px solid', borderColor: 'divider', textAlign: 'center', transition: 'all 0.3s ease', '&:hover': { border: '1px solid rgba(255,255,255,0.1)', transform: 'translateY(-4px)' } }}>
+                      <Typography variant="h2" sx={{ fontWeight: 900, color: 'text.primary', mb: 1, letterSpacing: -2 }}>{stats.total}</Typography>
                       <Typography variant="overline" sx={{ color: '#94a3b8', fontWeight: 900, letterSpacing: 2, opacity: 0.8 }}>TOTAL DEPLOYMENTS</Typography>
                     </Paper>
                   </Grid>
@@ -322,7 +323,7 @@ const UserProfile = ({
                     </Paper>
                   </Grid>
                   <Grid item xs={12}>
-                    <Paper sx={{ p: 4, borderRadius: 6, bgcolor: 'rgba(15, 23, 42, 0.5)', border: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
+                    <Paper sx={{ p: 4, borderRadius: 6, bgcolor: 'background.paper', border: '1px solid', borderColor: 'divider', position: 'relative', overflow: 'hidden' }}>
                       {/* Scanning Effect */}
                       <Box sx={{ 
                         position: 'absolute', 
@@ -347,7 +348,7 @@ const UserProfile = ({
                         sx={{ 
                           height: 10, 
                           borderRadius: 6, 
-                          bgcolor: 'rgba(255,255,255,0.05)',
+                          bgcolor: 'action.hover',
                           '& .MuiLinearProgress-bar': {
                             borderRadius: 6,
                             background: 'linear-gradient(90deg, #6366f1 0%, #a855f7 100%)',
@@ -366,13 +367,13 @@ const UserProfile = ({
                  sx={{ 
                    p: 4, 
                    borderRadius: 8, 
-                   bgcolor: 'rgba(15, 23, 42, 0.7)', 
+                   bgcolor: 'background.paper', 
                    backdropFilter: 'blur(30px)',
                    border: '1px solid rgba(99, 102, 241, 0.15)',
                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.6)'
                  }}
               >
-                <Typography variant="h6" sx={{ fontWeight: 900, color: 'white', mb: 4, display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Typography variant="h6" sx={{ fontWeight: 900, color: 'text.primary', mb: 4, display: 'flex', alignItems: 'center', gap: 1.5 }}>
                   <LogoutIcon sx={{ color: '#ef4444' }} /> EMERGENCY OVERRIDE CONTROLS
                 </Typography>
                 <Grid container spacing={2}>

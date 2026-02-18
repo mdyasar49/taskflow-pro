@@ -64,38 +64,116 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
     return new Date(dateString) < new Date();
   };
 
+  const tableContainerProps = {
+    component: Paper,
+    elevation: 0,
+    variant: "outlined",
+    role: "region",
+    "aria-label": "Task Management Table Container",
+    sx: { 
+      height: '100%', 
+      overflow: 'auto',
+      borderRadius: 2,
+      bgcolor: 'background.paper',
+      borderColor: 'divider'
+    }
+  };
+
+  const tableProps = {
+    stickyHeader: true,
+    size: "medium",
+    padding: "normal",
+    "aria-label": "premium task table",
+    sx: { minWidth: 1250 }
+  };
+
   return (
-    <TableContainer component={Box} sx={{ height: '100%', overflow: 'auto' }}>
-      <Table stickyHeader sx={{ minWidth: 1250 }} aria-label="premium task table">
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{ bgcolor: '#0f172a', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 450 }}>
+    <TableContainer {...tableContainerProps}>
+      <Table {...tableProps}>
+        <TableHead component="thead">
+          <TableRow component="tr">
+            <TableCell 
+              component="th" 
+              variant="head" 
+              align="left" 
+              padding="normal" 
+              scope="col"
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 450 }}
+            >
               TASK DETAILS
             </TableCell>
-            <TableCell sx={{ bgcolor: '#0f172a', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 150 }}>
+            <TableCell 
+              component="th" 
+              variant="head" 
+              align="left" 
+              padding="normal" 
+              scope="col"
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 150 }}
+            >
               CURRENT STATUS
             </TableCell>
-            <TableCell sx={{ bgcolor: '#0f172a', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 120 }}>
+            <TableCell 
+              component="th" 
+              variant="head" 
+              align="left" 
+              padding="normal" 
+              scope="col"
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 120 }}
+            >
               PRIORITY
             </TableCell>
-            <TableCell sx={{ bgcolor: '#0f172a', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}>
+            <TableCell 
+              component="th" 
+              variant="head" 
+              align="left" 
+              padding="normal" 
+              scope="col"
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}
+            >
               TARGET DEADLINE
             </TableCell>
-            <TableCell sx={{ bgcolor: '#0f172a', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}>
+            <TableCell 
+              component="th" 
+              variant="head" 
+              align="left" 
+              padding="normal" 
+              scope="col"
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}
+            >
               CREATED BY
             </TableCell>
-            <TableCell sx={{ bgcolor: '#0f172a', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}>
+            <TableCell 
+              component="th" 
+              variant="head" 
+              align="left" 
+              padding="normal" 
+              scope="col"
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}
+            >
               LAST MODIFIED
             </TableCell>
-            <TableCell align="right" sx={{ bgcolor: '#0f172a', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 150 }}>
+            <TableCell 
+              component="th" 
+              variant="head" 
+              align="right" 
+              padding="normal" 
+              scope="col"
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 150 }}
+            >
               ACTIONS
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody component="tbody">
           {tasks.length === 0 ? (
-            <TableRow>
-              <TableCell colSpan={7} align="center" sx={{ py: 12, borderBottom: 'none' }}>
+            <TableRow component="tr">
+              <TableCell 
+                component="td" 
+                variant="body" 
+                colSpan={7} 
+                align="center" 
+                sx={{ py: 12, borderBottom: 'none' }}
+              >
                 <Box sx={{ opacity: 0.3, textAlign: 'center' }}>
                    <OpenIcon sx={{ fontSize: 80, mb: 1, color: '#475569' }} />
                    <Typography variant="h5" sx={{ fontWeight: 900, color: '#94a3b8' }}>CLEAR DECK</Typography>
@@ -108,22 +186,33 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               const statusStyle = getStatusStyle(task.status);
               return (
                 <TableRow 
-                  key={task.id} 
+                  key={task.id}
+                  hover={true}
+                  selected={false}
+                  component="tr"
+                  tabIndex={-1}
                   sx={{ 
                     position: 'relative',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     '&:hover': { 
-                      bgcolor: 'rgba(99, 102, 241, 0.03)',
+                      bgcolor: 'action.hover',
                       '& .left-accent': {
                         opacity: 1,
                         height: '100%',
                         boxShadow: '0 0 15px #6366f1'
                       }
                     },
-                    '& td': { borderBottom: '1px solid rgba(255,255,255,0.03)' }
+                    '& td': { borderBottom: '1px solid', borderColor: 'divider' }
                   }}
                 >
-                  <TableCell sx={{ py: 3, position: 'relative' }}>
+                  <TableCell 
+                    component="td" 
+                    variant="body" 
+                    align="left" 
+                    padding="normal"
+                    scope="row"
+                    sx={{ py: 3, position: 'relative' }}
+                  >
                     <Box 
                       className="left-accent"
                       sx={{ 
@@ -141,16 +230,16 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                     />
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, pl: 1 }}>
                        <Box>
-                          <Typography variant="subtitle2" sx={{ fontWeight: 900, color: '#f8fafc', lineHeight: 1.2 }}>
+                          <Typography variant="subtitle2" sx={{ fontWeight: 900, color: 'text.primary', lineHeight: 1.2 }}>
                             {task.title}
                           </Typography>
-                          <Typography variant="caption" sx={{ color: '#94a3b8', mt: 0.5, display: 'block', whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}>
+                          <Typography variant="caption" sx={{ color: 'text.secondary', mt: 0.5, display: 'block', whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}>
                             {task.description || 'No additional specification.'}
                           </Typography>
                        </Box>
                     </Box>
                   </TableCell>
-                  <TableCell>
+                  <TableCell component="td" variant="body" align="left" padding="normal">
                     <Box 
                       sx={{ 
                         display: 'inline-flex',
@@ -173,7 +262,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                       {statusStyle.label}
                     </Box>
                   </TableCell>
-                  <TableCell>
+                  <TableCell component="td" variant="body" align="left" padding="normal">
                     <Box 
                       sx={{ 
                         display: 'inline-flex',
@@ -194,7 +283,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                       {task.priority || 'MEDIUM'}
                     </Box>
                   </TableCell>
-                  <TableCell>
+                  <TableCell component="td" variant="body" align="left" padding="normal">
                     <Box sx={{ 
                       color: isOverdue(task.dueDate, task.status) ? '#ef4444' : '#94a3b8',
                       fontWeight: isOverdue(task.dueDate, task.status) ? 900 : 500
@@ -209,9 +298,9 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                       )}
                     </Box>
                   </TableCell>
-                  <TableCell>
-                    <Box sx={{ px: 1.5, py: 1, borderRadius: 2, bgcolor: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.03)', display: 'inline-block' }}>
-                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 900, color: '#f8fafc', lineHeight: 1 }}>
+                  <TableCell component="td" variant="body" align="left" padding="normal">
+                    <Box sx={{ px: 1.5, py: 1, borderRadius: 2, bgcolor: 'action.hover', border: '1px solid', borderColor: 'divider', display: 'inline-block' }}>
+                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 900, color: 'text.primary', lineHeight: 1 }}>
                         {task.createdBy || 'SYSTEM'}
                       </Typography>
                       <Typography sx={{ fontSize: '0.6rem', color: '#64748b', fontWeight: 700, mt: 0.5, letterSpacing: 0.5 }}>
@@ -219,9 +308,9 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>
+                  <TableCell component="td" variant="body" align="left" padding="normal">
                     <Box sx={{ px: 1.5, py: 1, borderRadius: 2, bgcolor: 'rgba(99, 102, 241, 0.03)', border: '1px solid rgba(99, 102, 241, 0.05)', display: 'inline-block' }}>
-                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 900, color: '#f8fafc', lineHeight: 1 }}>
+                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 900, color: 'text.primary', lineHeight: 1 }}>
                         {task.modifiedBy || 'SYSTEM'}
                       </Typography>
                       <Typography sx={{ fontSize: '0.6rem', color: '#6366f1', fontWeight: 700, mt: 0.5, letterSpacing: 0.5, opacity: 0.8 }}>
@@ -229,7 +318,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell component="td" variant="body" align="right" padding="normal">
                     <Stack direction="row" spacing={1} justifyContent="flex-end">
                       {task.status === 'Done' || task.status === 'Canceled' ? (
                         <>
@@ -260,7 +349,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                               '&:hover': { 
                                 bgcolor: 'rgba(148, 163, 184, 0.1)',
                                 transform: 'scale(1.2)',
-                                color: 'white'
+                                color: 'text.primary'
                               } 
                             }}
                           >
@@ -304,7 +393,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                           </Tooltip>
                         </>
                       )}
-                      {task.status !== 'Done' && (
+                      {task.status !== 'Done' && task.status !== 'Canceled' && (
                         <Tooltip title="DELETE DATA">
                           <IconButton 
                             size="small"

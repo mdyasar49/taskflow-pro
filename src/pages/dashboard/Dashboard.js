@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { taskService, authService } from '../../services/api';
+import { useColorMode } from '../../context/ThemeContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AUTH_TOKEN_KEY, USERNAME_KEY } from '../../config';
 import { 
@@ -54,7 +55,9 @@ import {
   VpnKey as PasswordIcon,
   Visibility as VisibilityIcon,
   VisibilityOff as VisibilityOffIcon,
-  IosShare as ExportIcon
+  IosShare as ExportIcon,
+  Brightness4,
+  Brightness7
 } from '@mui/icons-material';
 import TaskForm from '../../sections/tasks/TaskForm';
 import TaskList from '../../sections/tasks/TaskList';
@@ -62,6 +65,7 @@ import AnalysisView from '../../components/dashboard/AnalysisView';
 import UserProfile from '../../components/dashboard/UserProfile';
 
 const Dashboard = () => {
+  const { mode, toggleColorMode } = useColorMode();
   const [tasks, setTasks] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -77,7 +81,7 @@ const Dashboard = () => {
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [editUsername, setEditUsername] = useState(localStorage.getItem(USERNAME_KEY) || '');
   const [isEditingPassword, setIsEditingPassword] = useState(false);
-  const [passwordData, setPasswordData] = useState({ current: '', new: '', confirm: '' });
+  const [passwordData, setPasswordData] = useState({ current: 'Admin@2026', new: '', confirm: '' });
   const [showPassword, setShowPassword] = useState(false);
   const openMenu = Boolean(anchorEl);
   
@@ -184,7 +188,15 @@ const Dashboard = () => {
 
   const [restartConfirmationOpen, setRestartConfirmationOpen] = useState(false);
   const [taskToRestart, setTaskToRestart] = useState(null);
-  const [restartedIds, setRestartedIds] = useState([]);
+  /* Persistence for restarted tasks to prevent duplicate restarts */
+  const [restartedIds, setRestartedIds] = useState(() => {
+    const saved = localStorage.getItem('restartedTasks');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('restartedTasks', JSON.stringify(restartedIds));
+  }, [restartedIds]);
 
   const handleRestartTask = (task) => {
     setTaskToRestart(task);
@@ -217,7 +229,7 @@ const Dashboard = () => {
   };
 
   const handleUpdateStatus = async (task) => {
-    const statusCycle = ['Open', 'In Progress', 'In Review', 'On Hold', 'Done'];
+    const statusCycle = ['Open', 'In Progress', 'In Review', 'Done'];
     const currentIndex = statusCycle.indexOf(task.status);
     const nextStatus = statusCycle[(currentIndex + 1) % statusCycle.length];
     const username = localStorage.getItem(USERNAME_KEY) || 'SYSTEM';
@@ -299,7 +311,7 @@ const Dashboard = () => {
     >
       <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Box>
-          <Typography variant="h4" sx={{ fontWeight: 900, color: '#f8fafc' }}>Operations Console</Typography>
+          <Typography variant="h4" sx={{ fontWeight: 900, color: 'text.primary' }}>Operations Console</Typography>
         </Box>
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Button 
@@ -310,8 +322,8 @@ const Dashboard = () => {
               borderRadius: 3, 
               px: 3, 
               fontWeight: 800, 
-              color: '#94a3b8',
-              borderColor: 'rgba(148, 163, 184, 0.3)',
+              color: 'text.secondary',
+              borderColor: 'divider',
               '&:hover': { borderColor: '#6366f1', color: '#6366f1', bgcolor: 'rgba(99, 102, 241, 0.05)' }
             }}
           >
@@ -343,7 +355,7 @@ const Dashboard = () => {
             flex: 1, 
             display: 'flex', 
             flexDirection: 'column',
-            bgcolor: 'rgba(15, 23, 42, 0.8)',
+            bgcolor: 'background.paper',
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(99, 102, 241, 0.1)',
             boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)'
@@ -362,8 +374,8 @@ const Dashboard = () => {
                     startAdornment: <SearchIcon color="disabled" sx={{ mr: 1, fontSize: 22 }} />,
                     sx: { 
                       borderRadius: 3, 
-                      bgcolor: 'rgba(15, 23, 42, 0.5)', 
-                      color: 'white',
+                      bgcolor: 'action.hover', 
+                      color: 'text.primary',
                       '& .MuiOutlinedInput-notchedOutline': {
                         borderColor: 'rgba(99, 102, 241, 0.2)',
                       },
@@ -389,7 +401,7 @@ const Dashboard = () => {
                     setPage(0);
                   }}
                   startAdornment={<FilterIcon fontSize="small" sx={{ mr: 1, color: '#94a3b8' }} />}
-                  sx={{ borderRadius: 3, bgcolor: 'rgba(15, 23, 42, 0.5)', border: 'none', color: 'white', '& fieldset': { border: 'none' } }}
+                  sx={{ borderRadius: 3, bgcolor: 'action.hover', border: 'none', color: 'text.primary', '& fieldset': { border: 'none' } }}
                 >
                   <MenuItem value="All">All Statuses</MenuItem>
                   <MenuItem value="Open">Pending Initiatives</MenuItem>
@@ -404,7 +416,7 @@ const Dashboard = () => {
             <Grid item xs={12} md={1} textAlign="right">
               <IconButton 
                 onClick={fetchTasks} 
-                sx={{ bgcolor: 'rgba(15, 23, 42, 0.5)', color: 'white', '&:hover': { bgcolor: 'rgba(15, 23, 42, 0.8)' } }}
+                sx={{ bgcolor: 'action.hover', color: 'text.primary', '&:hover': { bgcolor: 'action.selected' } }}
               >
                 <RefreshIcon size="small" />
               </IconButton>
@@ -429,7 +441,7 @@ const Dashboard = () => {
                   restartedIds={restartedIds}
                 />
               </Box>
-              <Box sx={{ p: 1, bgcolor: 'rgba(15, 23, 42, 0.3)' }}>
+              <Box sx={{ p: 1, borderTop: '1px solid rgba(148, 163, 184, 0.1)' }}>
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 25]}
                     component="div"
@@ -438,7 +450,7 @@ const Dashboard = () => {
                     page={page}
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
-                    sx={{ border: 'none', color: '#94a3b8' }}
+                    sx={{ border: 'none', color: 'text.secondary' }}
                   />
               </Box>
             </>
@@ -449,14 +461,14 @@ const Dashboard = () => {
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', bgcolor: '#0f172a', color: '#f8fafc', overflow: 'hidden' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', bgcolor: 'background.default', color: 'text.primary', overflow: 'hidden' }}>
       {/* Password Update Dialog */}
       <Dialog 
         open={isEditingPassword} 
         onClose={() => setIsEditingPassword(false)}
         PaperProps={{
           sx: { 
-            bgcolor: '#0a0f1e', 
+            bgcolor: 'background.paper', 
             backgroundImage: 'none', 
             borderRadius: 6, 
             border: '1px solid rgba(99, 102, 241, 0.1)',
@@ -464,9 +476,9 @@ const Dashboard = () => {
           }
         }}
       >
-        <DialogTitle sx={{ color: 'white', fontWeight: 900, pb: 1 }}>Update Security Keys</DialogTitle>
+        <DialogTitle sx={{ color: 'text.primary', fontWeight: 900, pb: 1 }}>Update Security Keys</DialogTitle>
         <DialogContent>
-          <Typography variant="caption" sx={{ color: '#94a3b8', mb: 3, display: 'block' }}>Re-verify your neural encryption credentials.</Typography>
+          <Typography variant="caption" sx={{ color: 'text.secondary', mb: 3, display: 'block' }}>Re-verify your neural encryption credentials.</Typography>
           <Stack spacing={2.5} sx={{ mt: 1 }}>
             <TextField
               fullWidth
@@ -479,13 +491,13 @@ const Dashboard = () => {
                 inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
                 input: {
                   sx: { 
-                    color: 'white', 
-                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    color: 'text.primary', 
+                    bgcolor: 'action.hover', 
                     borderRadius: 3,
                     '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
                   },
                   endAdornment: (
-                    <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'rgba(255,255,255,0.3)' }}>
+                    <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: 'text.secondary' }}>
                       {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                     </IconButton>
                   )
@@ -501,14 +513,14 @@ const Dashboard = () => {
               onChange={(e) => setPasswordData({ ...passwordData, new: e.target.value })}
               slotProps={{
                 inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
-                input: { 
-                  sx: { 
-                    color: 'white', 
-                    bgcolor: 'rgba(0,0,0,0.2)', 
-                    borderRadius: 3,
-                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
-                  } 
-                }
+                  input: { 
+                    sx: { 
+                      color: 'text.primary', 
+                      bgcolor: 'action.hover', 
+                      borderRadius: 3,
+                      '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
+                    } 
+                  }
               }}
             />
             <TextField
@@ -522,8 +534,8 @@ const Dashboard = () => {
                 inputLabel: { sx: { color: 'rgba(99, 102, 241, 0.4)', fontWeight: 800 } },
                 input: { 
                   sx: { 
-                    color: 'white', 
-                    bgcolor: 'rgba(0,0,0,0.2)', 
+                    color: 'text.primary', 
+                    bgcolor: 'action.hover', 
                     borderRadius: 3,
                     '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }
                   } 
@@ -533,7 +545,7 @@ const Dashboard = () => {
           </Stack>
         </DialogContent>
         <DialogActions sx={{ p: 3 }}>
-          <Button onClick={() => setIsEditingPassword(false)} sx={{ color: '#94a3b8', fontWeight: 800 }}>ABORT</Button>
+          <Button onClick={() => setIsEditingPassword(false)} sx={{ color: 'text.secondary', fontWeight: 800 }}>ABORT</Button>
           <Button 
             onClick={handleUpdatePassword} 
             variant="contained"
@@ -544,7 +556,7 @@ const Dashboard = () => {
         </DialogActions>
       </Dialog>
 
-      <AppBar position="static" elevation={0} sx={{ borderBottom: '1px solid rgba(99, 102, 241, 0.1)', bgcolor: '#020617', color: '#f8fafc' }}>
+      <AppBar position="static" elevation={0} sx={{ borderBottom: '1px solid rgba(99, 102, 241, 0.1)', bgcolor: 'background.default', color: 'text.primary' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <StatsIcon sx={{ display: 'flex', mr: 2, color: '#6366f1', fontSize: 28 }} />
@@ -556,11 +568,14 @@ const Dashboard = () => {
               TASKFLOW
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <IconButton onClick={toggleColorMode} color="inherit" sx={{ mr: 1 }}>
+                {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+              </IconButton>
               <Button
                 onClick={handleMenuOpen}
                 sx={{ 
                   textTransform: 'none', 
-                  color: '#f8fafc',
+                  color: 'text.primary',
                   borderRadius: 3,
                   px: 2,
                   py: 1,
@@ -602,8 +617,8 @@ const Dashboard = () => {
                     mt: 1.5,
                     borderRadius: 4,
                     minWidth: 240,
-                    bgcolor: '#0a0f1e',
-                    color: '#f8fafc',
+                    bgcolor: 'background.paper',
+                    color: 'text.primary',
                     border: '1px solid rgba(99, 102, 241, 0.1)',
                     boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
                     '& .MuiMenuItem-root': {
@@ -683,7 +698,7 @@ const Dashboard = () => {
         onClose={() => setRestartConfirmationOpen(false)}
         PaperProps={{
           sx: {
-            bgcolor: '#0a0f1e',
+            bgcolor: 'background.paper',
             backgroundImage: 'none',
             borderRadius: 4,
             border: '1px solid rgba(99, 102, 241, 0.3)',
@@ -692,16 +707,16 @@ const Dashboard = () => {
           }
         }}
       >
-        <DialogTitle sx={{ color: '#f8fafc', fontWeight: 900, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+        <DialogTitle sx={{ color: 'text.primary', fontWeight: 900, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
           <RefreshIcon sx={{ color: '#6366f1' }} /> CONFIRM RESTART
         </DialogTitle>
         <DialogContent>
-          <Typography sx={{ color: '#f8fafc', mb: 2 }}>
+          <Typography sx={{ color: 'text.primary', mb: 2 }}>
             Restarting this operation will create a NEW task with the same specifications. Continue?
           </Typography>
         </DialogContent>
         <DialogActions sx={{ p: 3, pt: 0 }}>
-          <Button onClick={() => setRestartConfirmationOpen(false)} sx={{ color: '#f8fafc', fontWeight: 800 }}>
+          <Button onClick={() => setRestartConfirmationOpen(false)} sx={{ color: 'text.primary', fontWeight: 800 }}>
             CANCEL
           </Button>
           <Button 
@@ -726,7 +741,7 @@ const Dashboard = () => {
         onClose={() => setDeleteConfirmationOpen(false)}
         PaperProps={{
           sx: {
-            bgcolor: '#0a0f1e',
+            bgcolor: 'background.paper',
             backgroundImage: 'none',
             borderRadius: 4,
             border: '1px solid rgba(239, 68, 68, 0.3)',

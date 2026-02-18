@@ -68,8 +68,8 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
         sx: {
           borderRadius: 4,
           overflow: 'hidden',
-          bgcolor: '#0a0f1e',
-          color: 'white',
+          bgcolor: 'background.paper',
+          color: 'text.primary',
           border: '1px solid rgba(99, 102, 241, 0.1)',
           boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.6)'
         }
@@ -79,8 +79,8 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
         <Box 
           sx={{ 
             p: 3, 
-            background: 'linear-gradient(135deg, #020617 0%, #0f172a 100%)',
-            color: 'white',
+            bgcolor: 'background.default',
+            color: 'text.primary',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center'
@@ -97,7 +97,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 </Typography>
             </Box>
           </Stack>
-          <IconButton onClick={onClose} size="small" sx={{ color: 'white', opacity: 0.6, '&:hover': { opacity: 1 } }}>
+          <IconButton onClick={onClose} size="small" sx={{ color: 'text.primary', opacity: 0.6, '&:hover': { opacity: 1 } }}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </Box>
@@ -107,7 +107,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
         <DialogContent 
           sx={{ 
             p: 4, 
-            bgcolor: '#0a0f1e',
+            bgcolor: 'background.paper',
             maxHeight: '65vh',
             overflowY: 'auto',
             '&::-webkit-scrollbar': {
@@ -119,7 +119,8 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
             '&::-webkit-scrollbar-thumb': {
               bgcolor: 'rgba(99, 102, 241, 0.1)',
               borderRadius: '10px',
-              border: '2px solid #0a0f1e',
+              border: '2px solid',
+              borderColor: 'background.paper',
             },
             '&::-webkit-scrollbar-thumb:hover': {
               bgcolor: 'rgba(99, 102, 241, 0.2)',
@@ -128,7 +129,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
         >
           <Stack spacing={3.5} sx={{ mt: 1 }}>
             <Box>
-              <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
+              <Typography variant="caption" sx={{ fontWeight: 900, color: 'text.secondary', mb: 1, display: 'block', letterSpacing: 1 }}>
                 TASK IDENTIFIER
               </Typography>
               <TextField
@@ -142,14 +143,14 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 slotProps={{
                   input: {
                     startAdornment: <TitleIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                    sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.9rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                   }
                 }}
               />
             </Box>
 
             <Box>
-              <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
+              <Typography variant="caption" sx={{ fontWeight: 900, color: 'text.secondary', mb: 1, display: 'block', letterSpacing: 1 }}>
                 SPECIFICATIONS
               </Typography>
               <TextField
@@ -163,7 +164,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 slotProps={{
                   input: {
                     startAdornment: <DescIcon sx={{ color: '#6366f1', mr: 1, mt: 1, alignSelf: 'flex-start', fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.9rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                    sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.9rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                   }
                 }}
               />
@@ -171,7 +172,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
 
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
+                <Typography variant="caption" sx={{ fontWeight: 900, color: 'text.secondary', mb: 1, display: 'block', letterSpacing: 1 }}>
                   OPERATIONAL PHASE
                 </Typography>
                 <TextField
@@ -183,7 +184,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   slotProps={{
                     input: {
                       startAdornment: <StatusIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                      sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                      sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.85rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                     }
                   }}
                 >
@@ -197,7 +198,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
+                <Typography variant="caption" sx={{ fontWeight: 900, color: 'text.secondary', mb: 1, display: 'block', letterSpacing: 1 }}>
                   PRIORITY LEVEL
                 </Typography>
                 <TextField
@@ -209,7 +210,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   slotProps={{
                     input: {
                       startAdornment: <StatusIcon sx={{ color: priority === 'HIGH' ? '#ef4444' : priority === 'MEDIUM' ? '#f59e0b' : '#3b82f6', mr: 1, fontSize: 18 }} />,
-                      sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                      sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.85rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                     }
                   }}
                 >
@@ -220,7 +221,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
               </Grid>
 
               <Grid item xs={12}>
-                <Typography variant="caption" sx={{ fontWeight: 900, color: '#f8fafc', mb: 1, display: 'block', letterSpacing: 1 }}>
+                <Typography variant="caption" sx={{ fontWeight: 900, color: 'text.secondary', mb: 1, display: 'block', letterSpacing: 1 }}>
                   TARGET DEADLINE
                 </Typography>
                 <TextField
@@ -231,7 +232,19 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   disabled={isReadOnly}
                   slotProps={{
                     input: {
-                      sx: { borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.02)', fontWeight: 800, fontSize: '0.85rem', color: 'white', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'white', '-webkitTextFillColor': 'white' } }
+                      sx: { 
+                        borderRadius: '12px', 
+                        bgcolor: 'action.hover', 
+                        fontWeight: 800, 
+                        fontSize: '0.85rem', 
+                        color: 'text.primary', 
+                        '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, 
+                        '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' },
+                        '& ::-webkit-calendar-picker-indicator': {
+                            filter: theme.palette.mode === 'dark' ? 'invert(1)' : 'none',
+                            cursor: 'pointer'
+                        }
+                      }
                     },
                     inputLabel: {
                       shrink: true
@@ -245,11 +258,11 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
 
         <Divider sx={{ opacity: 0.5 }} />
 
-        <DialogActions sx={{ p: 3, bgcolor: '#020617' }}>
+        <DialogActions sx={{ p: 3, bgcolor: 'background.default' }}>
           <Button 
             onClick={onClose} 
             sx={{ 
-                color: '#f8fafc', 
+                color: 'text.secondary', 
                 fontWeight: 700, 
                 px: 3, 
                 textTransform: 'none',

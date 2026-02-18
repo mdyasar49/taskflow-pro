@@ -62,7 +62,7 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                 p: 4, 
                 borderRadius: 4, 
                 textAlign: 'center', 
-                bgcolor: 'rgba(15, 23, 42, 0.4)', 
+                bgcolor: 'background.paper', 
                 minHeight: 350, 
                 display: 'flex', 
                 flexDirection: 'column', 
@@ -92,7 +92,7 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                     value={100} 
                     size={140} 
                     thickness={1.5} 
-                    sx={{ color: 'rgba(255,255,255,0.05)', position: 'absolute' }} 
+                    sx={{ color: 'action.hover', position: 'absolute' }} 
                   />
                   
                   {/* Primary Progress */}
@@ -109,14 +109,14 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                   />
                   
                   <Box sx={{ position: 'absolute', textAlign: 'center' }}>
-                      <Typography variant="h3" sx={{ fontWeight: 900, color: 'white', lineHeight: 1 }}>
+                      <Typography variant="h3" sx={{ fontWeight: 900, color: 'text.primary', lineHeight: 1 }}>
                           {stats.total > 0 ? `${Math.round((stats.done / stats.total) * 100)}%` : '0%'}
                       </Typography>
                       <Typography variant="overline" sx={{ color: '#6366f1', fontWeight: 800, fontSize: '0.65rem' }}>SYNCED</Typography>
                   </Box>
               </Box>
 
-              <Typography variant="h5" gutterBottom sx={{ fontWeight: 900, color: 'white', letterSpacing: -0.5 }}>
+              <Typography variant="h5" gutterBottom sx={{ fontWeight: 900, color: 'text.primary', letterSpacing: -0.5 }}>
                   {stats.total > 0 ? `Mission Success Probability: ${Math.round((stats.done / stats.total) * 100)}%` : 'Neural Link Status: Awaiting Data'}
               </Typography>
               <Typography variant="body2" color="textSecondary" sx={{ mb: 4, maxWidth: 500, fontSize: '0.95rem', opacity: 0.7, fontWeight: 500 }}>
@@ -137,12 +137,13 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                   letterSpacing: 1.5,
                   background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
                   boxShadow: '0 10px 25px -5px rgba(99, 102, 241, 0.4)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  border: '1px solid',
+                  borderColor: 'divider',
                   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   '&:hover': {
                       transform: 'translateY(-3px) scale(1.02)',
                       boxShadow: '0 20px 40px -10px rgba(99, 102, 241, 0.6)',
-                      borderColor: 'rgba(255,255,255,0.3)'
+                      borderColor: 'primary.light'
                   }
                 }}
               >
@@ -157,8 +158,8 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
               sx={{ 
                   p: 3, 
                   borderRadius: 4, 
-                  bgcolor: '#0f172a', 
-                  color: 'white',
+                  bgcolor: 'background.paper', 
+                  color: 'text.primary',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
