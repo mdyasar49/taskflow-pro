@@ -96,7 +96,7 @@ const Login = () => {
       <Container maxWidth="xs" className="animate-fade-in" sx={{ position: 'relative', zIndex: 1 }}>
         <Box sx={{ mb: 4, textAlign: 'center' }}>
           <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" sx={{ mb: 1 }}>
-            <StatsIcon sx={{ color: '#6366f1', fontSize: 32 }} />
+            <StatsIcon sx={{ color: 'primary.main', fontSize: 32 }} />
             <Typography variant="h4" sx={{ fontWeight: 900, letterSpacing: -1, color: 'text.primary' }}>
               TASKFLOW
             </Typography>
@@ -132,11 +132,12 @@ const Login = () => {
               severity="error" 
               sx={{ 
                 mb: 3, 
-                bgcolor: 'rgba(239, 68, 68, 0.1)', 
-                color: '#ef4444', 
-                border: '1px solid rgba(239, 68, 68, 0.2)',
+                bgcolor: 'error.main', 
+                color: 'white', 
+                border: '1px solid',
+                borderColor: 'error.main',
                 borderRadius: 2,
-                '& .MuiAlert-icon': { color: '#ef4444' }
+                '& .MuiAlert-icon': { color: 'white' }
               }}
             >
               {error}
@@ -160,9 +161,8 @@ const Login = () => {
                     color: 'text.primary', 
                     bgcolor: 'action.hover', 
                     borderRadius: 3,
-                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
-                    '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
-                    '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+                    '& fieldset': { borderColor: 'divider' },
+                    '&:hover fieldset': { borderColor: 'primary.main' }
                   }
                 }
               }}
@@ -184,9 +184,8 @@ const Login = () => {
                     color: 'text.primary', 
                     bgcolor: 'action.hover', 
                     borderRadius: 3,
-                    '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' },
-                    '&:hover fieldset': { borderColor: 'rgba(99, 102, 241, 0.4)' },
-                    '&.Mui-focused fieldset': { borderColor: '#6366f1' }
+                    '& fieldset': { borderColor: 'divider' },
+                    '&:hover fieldset': { borderColor: 'primary.main' }
                   },
                   endAdornment: (
                     <InputAdornment position="end">
@@ -211,9 +210,9 @@ const Login = () => {
                 fontWeight: 900,
                 fontSize: '0.9rem',
                 letterSpacing: 1,
-                background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
-                boxShadow: '0 8px 20px -5px rgba(99, 102, 241, 0.4)',
-                '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 12px 25px -5px rgba(99, 102, 241, 0.5)' }
+                background: (theme) => `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+                boxShadow: (theme) => `0 8px 20px -5px ${theme.palette.primary.main}60`,
+                '&:hover': { transform: 'translateY(-2px)', boxShadow: (theme) => `0 12px 25px -5px ${theme.palette.primary.main}80` }
               }}
               startIcon={loading ? <CircularProgress size={20} color="inherit" /> : <LockOpen />}
             >
@@ -221,7 +220,7 @@ const Login = () => {
             </Button>
             <Box textAlign="center">
               <Link to="/register" style={{ textDecoration: 'none' }}>
-                <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 800, '&:hover': { color: '#818cf8' } }}>
+                <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 800, '&:hover': { color: 'primary.light' } }}>
                   NO ACCESS? INITIATE REGISTRATION
                 </Typography>
               </Link>

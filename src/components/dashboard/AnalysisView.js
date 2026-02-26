@@ -68,8 +68,11 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                 flexDirection: 'column', 
                 justifyContent: 'center', 
                 alignItems: 'center',
-                border: '1px solid rgba(99, 102, 241, 0.1)',
-                background: 'radial-gradient(circle at top right, rgba(99, 102, 241, 0.05) 0%, rgba(15, 23, 42, 0) 100%)',
+                border: '1px solid',
+                borderColor: 'divider',
+                background: (theme) => theme.palette.mode === 'dark' 
+                    ? 'radial-gradient(circle at top right, rgba(99, 102, 241, 0.05) 0%, rgba(15, 23, 42, 0) 100%)'
+                    : 'radial-gradient(circle at top right, rgba(99, 102, 241, 0.03) 0%, rgba(255, 255, 255, 0) 100%)',
                 position: 'relative',
                 overflow: 'hidden'
               }}
@@ -96,23 +99,23 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                   />
                   
                   {/* Primary Progress */}
-                  <CircularProgress 
-                    variant="determinate" 
-                    value={stats.total > 0 ? (stats.done / stats.total) * 100 : 0} 
-                    size={140} 
-                    thickness={4} 
-                    sx={{ 
-                        color: '#6366f1', 
-                      filter: 'drop-shadow(0 0 8px rgba(99, 102, 241, 0.6))',
-                      strokeLinecap: 'round'
-                    }} 
-                  />
+                   <CircularProgress 
+                     variant="determinate" 
+                     value={stats.total > 0 ? (stats.done / stats.total) * 100 : 0} 
+                     size={140} 
+                     thickness={4} 
+                     sx={{ 
+                         color: 'primary.main', 
+                       filter: (theme) => theme.palette.mode === 'dark' ? 'drop-shadow(0 0 8px rgba(99, 102, 241, 0.6))' : 'none',
+                       strokeLinecap: 'round'
+                     }} 
+                   />
                   
                   <Box sx={{ position: 'absolute', textAlign: 'center' }}>
                       <Typography variant="h3" sx={{ fontWeight: 900, color: 'text.primary', lineHeight: 1 }}>
                           {stats.total > 0 ? `${Math.round((stats.done / stats.total) * 100)}%` : '0%'}
                       </Typography>
-                      <Typography variant="overline" sx={{ color: '#6366f1', fontWeight: 800, fontSize: '0.65rem' }}>SYNCED</Typography>
+                       <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 800, fontSize: '0.65rem' }}>SYNCED</Typography>
                   </Box>
               </Box>
 
@@ -163,9 +166,10 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  border: '1px solid rgba(99, 102, 241, 0.1)',
-                  boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5)'
-              }}
+                   border: '1px solid',
+                   borderColor: 'divider',
+                   boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 20px 40px -15px rgba(0, 0, 0, 0.5)' : '0 10px 20px -10px rgba(0, 0, 0, 0.1)'
+               }}
             >
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 800, mb: 2 }}>Control Panel</Typography>
               <Stack spacing={2} sx={{ flex: 1, justifyContent: 'center' }}>
@@ -176,22 +180,22 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                       variant="contained" 
                       startIcon={<AddIcon />} 
                       onClick={() => setOpenForm(true)}
-                      sx={{ 
-                        mt: 1, 
-                        py: 1.5, 
-                        borderRadius: 2, 
-                        bgcolor: '#6366f1', 
-                        fontWeight: 800,
-                        transition: 'all 0.3s ease',
-                        '&:hover': { 
-                          bgcolor: '#4f46e5',
-                          transform: 'scale(1.05)',
-                          boxShadow: '0 0 20px rgba(99, 102, 241, 0.4)'
-                        } 
-                      }}
-                    >
-                      DEPLOY TASK
-                    </Button>
+                       sx={{ 
+                         mt: 1, 
+                         py: 1.5, 
+                         borderRadius: 2, 
+                         bgcolor: 'primary.main', 
+                         fontWeight: 800,
+                         transition: 'all 0.3s ease',
+                         '&:hover': { 
+                           bgcolor: 'primary.dark',
+                           transform: 'scale(1.05)',
+                           boxShadow: (theme) => `0 0 20px ${theme.palette.primary.main}60`
+                         } 
+                       }}
+                     >
+                       DEPLOY TASK
+                     </Button>
                 </Box>
                 <Box sx={{ animation: 'float 5s ease-in-out infinite', animationDelay: '0.5s' }}>
                     <Typography variant="caption" sx={{ opacity: 0.6, textTransform: 'uppercase', letterSpacing: 1.2, fontWeight: 700 }}>System Sync</Typography>
@@ -200,22 +204,22 @@ const AnalysisView = ({ stats, setView, setOpenForm, fetchTasks }) => {
                       variant="outlined" 
                       startIcon={<RefreshIcon />}
                       onClick={fetchTasks}
-                      sx={{ 
-                        mt: 1, 
-                        py: 1.5, 
-                        borderRadius: 2, 
-                        color: '#6366f1', 
-                        borderColor: 'rgba(99, 102, 241, 0.3)', 
-                        fontWeight: 800,
-                        '&:hover': { 
-                          borderColor: '#6366f1', 
-                          bgcolor: 'rgba(99, 102, 241, 0.05)',
-                          transform: 'scale(1.05)'
-                        } 
-                      }}
-                    >
-                      REFRESH DATA
-                    </Button>
+                       sx={{ 
+                         mt: 1, 
+                         py: 1.5, 
+                         borderRadius: 2, 
+                         color: 'primary.main', 
+                         borderColor: (theme) => `${theme.palette.primary.main}40`, 
+                         fontWeight: 800,
+                         '&:hover': { 
+                           borderColor: 'primary.main', 
+                           bgcolor: 'action.hover',
+                           transform: 'scale(1.05)'
+                         } 
+                       }}
+                     >
+                       REFRESH DATA
+                     </Button>
                 </Box>
               </Stack>
               <Box sx={{ mt: 'auto', pt: 2, opacity: 0.5, textAlign: 'center' }}>

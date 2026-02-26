@@ -98,7 +98,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               align="left" 
               padding="normal" 
               scope="col"
-              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 450 }}
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: 'primary.main', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid', borderColor: 'divider', width: 450 }}
             >
               TASK DETAILS
             </TableCell>
@@ -108,7 +108,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               align="left" 
               padding="normal" 
               scope="col"
-              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 150 }}
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: 'primary.main', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid', borderColor: 'divider', width: 150 }}
             >
               CURRENT STATUS
             </TableCell>
@@ -118,7 +118,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               align="left" 
               padding="normal" 
               scope="col"
-              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 120 }}
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: 'primary.main', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid', borderColor: 'divider', width: 120 }}
             >
               PRIORITY
             </TableCell>
@@ -128,7 +128,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               align="left" 
               padding="normal" 
               scope="col"
-              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: 'primary.main', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid', borderColor: 'divider', width: 180 }}
             >
               TARGET DEADLINE
             </TableCell>
@@ -138,7 +138,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               align="left" 
               padding="normal" 
               scope="col"
-              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: 'primary.main', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid', borderColor: 'divider', width: 180 }}
             >
               CREATED BY
             </TableCell>
@@ -148,7 +148,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               align="left" 
               padding="normal" 
               scope="col"
-              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 180 }}
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: 'primary.main', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid', borderColor: 'divider', width: 180 }}
             >
               LAST MODIFIED
             </TableCell>
@@ -158,7 +158,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
               align="right" 
               padding="normal" 
               scope="col"
-              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: '#6366f1', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid rgba(99, 102, 241, 0.1)', width: 150 }}
+              sx={{ bgcolor: 'background.paper', fontWeight: 800, color: 'primary.main', py: 2.5, fontSize: '0.7rem', letterSpacing: 2, borderBottom: '1px solid', borderColor: 'divider', width: 150 }}
             >
               ACTIONS
             </TableCell>
@@ -177,7 +177,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                 <Box sx={{ opacity: 0.3, textAlign: 'center' }}>
                    <OpenIcon sx={{ fontSize: 80, mb: 1, color: '#475569' }} />
                    <Typography variant="h5" sx={{ fontWeight: 900, color: '#94a3b8' }}>CLEAR DECK</Typography>
-                   <Typography variant="body2" sx={{ letterSpacing: 1, color: '#64748b' }}>No active initiatives in the current queue.</Typography>
+                   <Typography variant="body2" sx={{ letterSpacing: 1, color: 'text.secondary' }}>No active initiatives in the current queue.</Typography>
                 </Box>
               </TableCell>
             </TableRow>
@@ -199,7 +199,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                       '& .left-accent': {
                         opacity: 1,
                         height: '100%',
-                        boxShadow: '0 0 15px #6366f1'
+                        boxShadow: (theme) => `0 0 15px ${theme.palette.primary.main}`
                       }
                     },
                     '& td': { borderBottom: '1px solid', borderColor: 'divider' }
@@ -285,14 +285,14 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                   </TableCell>
                   <TableCell component="td" variant="body" align="left" padding="normal">
                     <Box sx={{ 
-                      color: isOverdue(task.dueDate, task.status) ? '#ef4444' : '#94a3b8',
-                      fontWeight: isOverdue(task.dueDate, task.status) ? 900 : 500
+                     color: isOverdue(task.dueDate, task.status) ? 'error.main' : 'text.secondary',
+                     fontWeight: isOverdue(task.dueDate, task.status) ? 900 : 500
                     }}>
                       <Typography sx={{ fontSize: '0.7rem' }}>
                         {task.dueDate ? formatDate(task.dueDate) : 'NO DEADLINE'}
                       </Typography>
                       {isOverdue(task.dueDate, task.status) && (
-                        <Typography sx={{ fontSize: '0.55rem', fontWeight: 900, textTransform: 'uppercase', color: '#ef4444' }}>
+                        <Typography sx={{ fontSize: '0.55rem', fontWeight: 900, textTransform: 'uppercase', color: 'error.main' }}>
                           OVERDUE
                         </Typography>
                       )}
@@ -313,7 +313,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                       <Typography sx={{ fontSize: '0.7rem', fontWeight: 900, color: 'text.primary', lineHeight: 1 }}>
                         {task.modifiedBy || 'SYSTEM'}
                       </Typography>
-                      <Typography sx={{ fontSize: '0.6rem', color: '#6366f1', fontWeight: 700, mt: 0.5, letterSpacing: 0.5, opacity: 0.8 }}>
+                      <Typography sx={{ fontSize: '0.6rem', color: 'primary.main', fontWeight: 700, mt: 0.5, letterSpacing: 0.5, opacity: 0.8 }}>
                         {formatDate(task.modifiedOn)}
                       </Typography>
                     </Box>
@@ -330,9 +330,9 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                                 sx={{ 
                                   color: '#6366f1', 
                                   '&:hover': { 
-                                    bgcolor: 'rgba(99, 102, 241, 0.1)',
-                                    transform: 'rotate(180deg)'
-                                  },
+                                   bgcolor: 'action.hover',
+                                   transform: 'rotate(180deg)'
+                                 },
                                   transition: 'all 0.4s ease'
                                 }}
                               >
@@ -364,9 +364,9 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                               size="small"
                               onClick={() => onEditTask(task)} 
                               sx={{ 
-                                color: '#3b82f6', 
+                                color: 'info.main', 
                                 '&:hover': { 
-                                  bgcolor: 'rgba(59, 130, 246, 0.1)',
+                                  bgcolor: 'action.hover',
                                   transform: 'scale(1.2)'
                                 } 
                               }}
@@ -379,9 +379,9 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                               size="small"
                               onClick={() => onUpdateStatus(task)}
                               sx={{ 
-                                color: '#6366f1', 
+                                color: 'primary.main', 
                                 '&:hover': { 
-                                  bgcolor: 'rgba(99, 102, 241, 0.1)',
+                                  bgcolor: 'action.hover',
                                   '& .MuiSvgIcon-root': {
                                     animation: 'pulse 1s infinite'
                                   }
@@ -399,9 +399,9 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onEditTask, onRestartTa
                             size="small"
                             onClick={() => onDeleteTask(task.id)} 
                             sx={{ 
-                              color: '#ef4444', 
+                              color: 'error.main', 
                               '&:hover': { 
-                                bgcolor: 'rgba(239, 68, 68, 0.1)',
+                                bgcolor: 'action.hover',
                                 transform: 'scale(1.2)'
                               } 
                             }}

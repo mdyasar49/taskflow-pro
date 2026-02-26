@@ -1,14 +1,10 @@
 :root {
   --primary: #6366f1;
   --primary-hover: #4f46e5;
-  --bg-dark: #020617;
-  --card-bg: rgba(15, 23, 42, 0.8);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
   --border: rgba(99, 102, 241, 0.1);
-  --success: #818cf8;
-  --pending: #fbbf24;
-  --error: #f87171;
+  --success: #10b981;
+  --pending: #f59e0b;
+  --error: #ef4444;
 }
 
 * {
@@ -76,9 +72,9 @@ button {
 input,
 textarea,
 select {
-  background: rgba(15, 23, 42, 0.5);
+  background: transparent;
   border: 1px solid var(--border);
-  color: white;
+  color: inherit;
   padding: 12px 16px;
   border-radius: 8px;
   outline: none;

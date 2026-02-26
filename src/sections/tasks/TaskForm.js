@@ -70,8 +70,9 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
           overflow: 'hidden',
           bgcolor: 'background.paper',
           color: 'text.primary',
-          border: '1px solid rgba(99, 102, 241, 0.1)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.6)'
+          border: '1px solid',
+          borderColor: 'divider',
+          boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px -12px rgba(0, 0, 0, 0.6)' : '0 20px 40px -10px rgba(0, 0, 0, 0.1)'
         }
       }}
     >
@@ -142,8 +143,8 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 disabled={isReadOnly}
                 slotProps={{
                   input: {
-                    startAdornment: <TitleIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.9rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
+                    startAdornment: <TitleIcon sx={{ color: 'primary.main', mr: 1, fontSize: 18 }} />,
+                    sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.9rem', color: 'text.primary', '& fieldset': { borderColor: 'divider' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                   }
                 }}
               />
@@ -163,8 +164,8 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                 disabled={isReadOnly}
                 slotProps={{
                   input: {
-                    startAdornment: <DescIcon sx={{ color: '#6366f1', mr: 1, mt: 1, alignSelf: 'flex-start', fontSize: 18 }} />,
-                    sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.9rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
+                    startAdornment: <DescIcon sx={{ color: 'primary.main', mr: 1, mt: 1, alignSelf: 'flex-start', fontSize: 18 }} />,
+                    sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.9rem', color: 'text.primary', '& fieldset': { borderColor: 'divider' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                   }
                 }}
               />
@@ -183,8 +184,8 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   fullWidth
                   slotProps={{
                     input: {
-                      startAdornment: <StatusIcon sx={{ color: '#6366f1', mr: 1, fontSize: 18 }} />,
-                      sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.85rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
+                      startAdornment: <StatusIcon sx={{ color: 'primary.main', mr: 1, fontSize: 18 }} />,
+                      sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.85rem', color: 'text.primary', '& fieldset': { borderColor: 'divider' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                     }
                   }}
                 >
@@ -209,8 +210,8 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                   fullWidth
                   slotProps={{
                     input: {
-                      startAdornment: <StatusIcon sx={{ color: priority === 'HIGH' ? '#ef4444' : priority === 'MEDIUM' ? '#f59e0b' : '#3b82f6', mr: 1, fontSize: 18 }} />,
-                      sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.85rem', color: 'text.primary', '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
+                      startAdornment: <StatusIcon sx={{ color: priority === 'HIGH' ? 'error.main' : priority === 'MEDIUM' ? 'warning.main' : 'info.main', mr: 1, fontSize: 18 }} />,
+                      sx: { borderRadius: '12px', bgcolor: 'action.hover', fontWeight: 800, fontSize: '0.85rem', color: 'text.primary', '& fieldset': { borderColor: 'divider' }, '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' } }
                     }
                   }}
                 >
@@ -238,7 +239,7 @@ const TaskForm = ({ onTaskCreated, onClose, task = null }) => {
                         fontWeight: 800, 
                         fontSize: '0.85rem', 
                         color: 'text.primary', 
-                        '& fieldset': { borderColor: 'rgba(99, 102, 241, 0.2)' }, 
+                        '& fieldset': { borderColor: 'divider' }, 
                         '& .MuiInputBase-input.Mui-disabled': { color: 'text.primary', '-webkitTextFillColor': 'text.primary' },
                         '& ::-webkit-calendar-picker-indicator': {
                             filter: theme.palette.mode === 'dark' ? 'invert(1)' : 'none',

@@ -18,16 +18,23 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (
-      (error.response && error.response.status === 401) || // Unauthorized
-      error.code === "ERR_NETWORK" // Server Down
-    ) {
-      console.error(
-        "Session expired or server unreachable. Logging out...",
-        error,
-      );
+    // Check if the error is 401 (Unauthorized - usually token expired)
+    // or a network error (server down)
+    const isUnauthorized = error.response && error.response.status === 401;
+    const isNetworkError = error.code === "ERR_NETWORK";
+
+    if (isUnauthorized || isNetworkError) {
+      if (isUnauthorized) {
+        console.error("Session expired (401). Logging out...");
+      } else {
+        console.error("Server unreachable. Logging out...");
+      }
+      
       authService.logout();
-      window.location.href = "/";
+      
+      // Force redirect to root (which will redirect to login due to PrivateRoute)
+      // and prevent further execution of the failed request
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   },
